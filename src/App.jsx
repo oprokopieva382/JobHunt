@@ -1,4 +1,5 @@
-import { AddJob,
+import {
+  AddJob,
   Admin,
   AllJobs,
   DashboardLayout,
@@ -10,29 +11,30 @@ import { AddJob,
   Login,
   Profile,
   Register,
-  Stats} from "./pages"
+  Stats,
+} from "./pages";
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout />,
-  },
-  {
-    path: "/register",
-    element: <Register />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/dashboard",
-    element: <DashboardLayout />,
+    children: [
+      { index: true, element: <Landing /> },
+      {
+        path: "register",
+        element: <Register />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "dashboard",
+        element: <DashboardLayout />,
+      },
+    ],
   },
 ]);
 
