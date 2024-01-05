@@ -1,3 +1,17 @@
+import { AddJob,
+  Admin,
+  AllJobs,
+  DashboardLayout,
+  DeleteJob,
+  EditJob,
+  Error,
+  HomeLayout,
+  Landing,
+  Login,
+  Profile,
+  Register,
+  Stats} from "./pages"
+
 import {
   createBrowserRouter,
   RouterProvider,
