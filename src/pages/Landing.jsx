@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Wrapper from "./../assets/wrappers/LandingPage";
-import logoJobHunt from "../assets/images/logoJobHunt.png";
+import logo from "../assets/images/logo.png";
 import main from "../assets/images/main.png";
 import { Link } from "react-router-dom";
 
@@ -8,7 +8,8 @@ export const Landing = () => {
   return (
     <Wrapper>
       <nav>
-        <img src={logoJobHunt} alt="job hunt" className="logo" />
+        <img src={logo} alt="job hunt" className="logo" />
+        <h5 className="logospan">Job Hunt</h5>
       </nav>
       <div className="container page">
         <div className="info">

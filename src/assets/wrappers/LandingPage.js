@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Wrapper = styled.section`
   nav {
@@ -9,14 +9,28 @@ const Wrapper = styled.section`
     display: flex;
     align-items: center;
   }
+  .logo {
+    margin-top: 15px;
+    border: 1px solid white;
+    border-radius: 50%;
+    width: 50px;
+    height: auto;
+  }
+  .logospan {
+    margin-top: 10px;
+    padding: 10px;
+    font-weight: bold;
+    color: var(--primary-500);
+  }
   .page {
     min-height: calc(100vh - var(--nav-height));
     display: grid;
     align-items: center;
-    margin-top: -3rem;
+    margin-top: -5rem;
   }
   h1 {
     font-weight: 700;
+    color: var(--grey-700);
     span {
       color: var(--primary-500);
     }
@@ -43,7 +57,12 @@ const Wrapper = styled.section`
       column-gap: 3rem;
     }
     .main-img {
-      display: block;
+      display: fixed;
+      height: 80%;
+      width: 110%;
+      border-radius: 10px;
+      opacity: 0.8;
+      box-shadow: -40px 40px 20px rgba(0, 0, 0, 0.2);
     }
   }
 `;
