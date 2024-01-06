@@ -17,12 +17,10 @@ export const Landing = () => {
             job <span>tracking</span> app
           </h1>
           <p>
-            If you use a package manager like yarn that supports the
-            "resolutions" package.json field, we also highly recommend you add
-            an entry to it as well corresponding to the major version range.
-            This helps avoid an entire class of problems that arise from
-            multiple versions of styled-components being installed in your
-            project.
+            Discover your dream job with our job tracking app. We provide a
+            seamless experience for managing your job search, connecting you
+            with the latest opportunities, and helping you navigate your career
+            path. Take the next step towards success. Join us on your path to success!
           </p>
           <Link to="/register" className="btn register-link">
             Register
