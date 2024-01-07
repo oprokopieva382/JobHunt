@@ -1,4 +1,4 @@
-import { useDashboardContext } from "./DashboardLayout";
+import { useDashboardContext } from "../hooks/useDashboardContext";
 
 export const AddJob = () => {
   const data = useDashboardContext();
