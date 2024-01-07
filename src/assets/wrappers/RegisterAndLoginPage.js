@@ -5,9 +5,19 @@ const Wrapper = styled.section`
   display: grid;
   align-items: center;
   .logo {
-    display: block;
+    display: flex;
     margin: 0 auto;
-    margin-bottom: 1.38rem;
+    margin-bottom: 1rem;
+    border: 1px solid white;
+    border-radius: 50%;
+    width: 50px;
+    height: auto;
+  }
+  .logospan {
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: var(--primary-500);
+    text-align: center;
   }
   .form {
     max-width: 400px;
