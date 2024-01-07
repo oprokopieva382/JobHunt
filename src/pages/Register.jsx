@@ -12,7 +12,7 @@ export const Register = () => {
         <FormRow name="name" defaultValue="John" type="text"/>
         <FormRow name="lastName" labelText="Last Name" defaultValue="Smith" type="text"/>
         <FormRow name="location" defaultValue="Moon" type="text"/>
-        <FormRow name="email" defaultValue="John@gmail.com" type="text"/>
+        <FormRow name="email" defaultValue="John@gmail.com" type="email"/>
         <FormRow name="password" defaultValue="John123" type="password"/>
         <button type="submit" className="btn btn-block">
           submit
