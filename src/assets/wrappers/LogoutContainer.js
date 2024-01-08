@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   position: relative;
@@ -38,6 +38,12 @@ const Wrapper = styled.div`
     cursor: pointer;
     width: 100%;
     height: 100%;
+  }
+  .logout-icon {
+    font-size: 1.5rem;
+  }
+  .dropdown-btn:hover {
+    background: var(--primary-700);
   }
 `;
 
