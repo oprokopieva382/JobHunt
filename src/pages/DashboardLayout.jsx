@@ -5,11 +5,11 @@ import { createContext, useState } from "react";
 
 export const DashboardContext = createContext();
 
-export const DashboardLayout = () => {
+export const DashboardLayout = ({isDarkThemeEnabled}) => {
   //temp
   const user = { name: "John" };
   const [showSideBar, setShowSideBar] = useState(false);
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(isDarkThemeEnabled);
 
   const toggleDarkTheme = () => {
     const newDarkTheme = !isDarkTheme;
