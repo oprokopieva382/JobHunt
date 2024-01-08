@@ -1,13 +1,15 @@
 import Wrapper from "../assets/wrappers/Navbar";
 import { BsSliders } from "react-icons/bs";
 import { Logo } from "./logo";
+import { useDashboardContext } from "../hooks/useDashboardContext";
 
 
 export const NavBar = () => {
+  const {toggleSideBar} = useDashboardContext()
   return (
     <Wrapper>
       <div className="nav-center">
-        <button type="button" className="toggle-btn">
+        <button type="button" className="toggle-btn" onClick={toggleSideBar}>
           <BsSliders />
         </button>
         <div className="navbar-logo">
