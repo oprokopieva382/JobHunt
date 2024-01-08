@@ -25,10 +25,22 @@ const Wrapper = styled.nav`
   .logo-text {
     display: none;
   }
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
   .logo {
     display: flex;
     align-items: center;
-    width: 100px;
+    width: 50px;
+    border: 1px solid white;
+    border-radius: 50%;
+    height: auto;
+  }
+  .logospan {
+    font-weight: bold;
+    color: var(--primary-500);
   }
   .btn-container {
     display: flex;
