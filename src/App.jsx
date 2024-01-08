@@ -16,7 +16,7 @@ import {
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { checkDefaultTheme } from "./utils/checkDefaultTheme";
 
-const isDarkThemeEnabled = checkDefaultTheme()
+checkDefaultTheme()
 
 const router = createBrowserRouter([
   {
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path: "dashboard",
-        element: <DashboardLayout isDarkThemeEnabled={isDarkThemeEnabled} />,
+        element: <DashboardLayout />,
         children: [
           { index: true, element: <AddJob /> },
           { path: "stats", element: <Stats /> },
