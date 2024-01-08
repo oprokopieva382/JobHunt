@@ -21,6 +21,18 @@ const Wrapper = styled.aside`
     opacity: 1;
     visibility: visible;
   }
+  .logo {
+    display: flex;
+    align-items: center;
+    width: 50px;
+    border: 1px solid white;
+    border-radius: 50%;
+    height: auto;
+  }
+  .logospan {
+    font-weight: bold;
+    color: var(--primary-500);
+  }
   .content {
     background: var(--background-secondary-color);
     width: var(--fluid-width);
@@ -41,6 +53,11 @@ const Wrapper = styled.aside`
     font-size: 2rem;
     color: var(--red-dark);
     cursor: pointer;
+  }
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
   .nav-links {
     padding-top: 2rem;

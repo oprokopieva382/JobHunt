@@ -4,7 +4,7 @@ import { FaClipboardList } from "react-icons/fa";
 import { ImProfile } from "react-icons/im";
 import { RiAdminLine } from "react-icons/ri";
 
-const links = [
+export const links = [
   { text: "add job", path: ".", icon: <MdAddChart /> },
   { text: "all jobs", path: "all-jobs", icon: <FaClipboardList /> },
   { text: "stats", path: "stats", icon: <GiNetworkBars /> },
