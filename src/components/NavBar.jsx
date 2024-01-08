@@ -3,6 +3,7 @@ import { BsSliders } from "react-icons/bs";
 import { Logo } from "./logo";
 import { useDashboardContext } from "../hooks/useDashboardContext";
 import { LogoutContainer } from "./LogoutContainer";
+import { ThemeToggle } from "./ThemeToggle";
 
 
 export const NavBar = () => {
@@ -18,6 +19,7 @@ export const NavBar = () => {
           <h4 className="logo-text">dashboard</h4>
         </div>
         <div className="btn-container">
+        <ThemeToggle/>
         <LogoutContainer/>
         </div>
       </div>
