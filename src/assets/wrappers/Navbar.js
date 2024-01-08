@@ -28,7 +28,7 @@ const Wrapper = styled.nav`
   .navbar-logo {
     display: flex;
     align-items: center;
-    flex-direction: column;
+   /* flex-direction: column; */
   }
   .logo {
     display: flex;
@@ -37,6 +37,7 @@ const Wrapper = styled.nav`
     border: 1px solid white;
     border-radius: 50%;
     height: auto;
+    margin-right: 7px;
   }
   .logospan {
     font-weight: bold;
@@ -53,6 +54,9 @@ const Wrapper = styled.nav`
       width: 90%;
     }
     .logo {
+      display: none;
+    }
+    .logospan {
       display: none;
     }
     .logo-text {

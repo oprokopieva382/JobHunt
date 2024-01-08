@@ -20,6 +20,23 @@ const Wrapper = styled.aside`
     .show-sidebar {
       margin-left: 0;
     }
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+         }
+    .logo {
+      display: flex;
+      align-items: center;
+      width: 50px;
+      border: 1px solid white;
+      border-radius: 50%;
+      height: auto;
+    }
+    .logospan {
+      font-weight: bold;
+      color: var(--primary-500);
+      padding-left: 3px;
+    }
     header {
       height: 6rem;
       display: flex;
