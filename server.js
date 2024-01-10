@@ -3,11 +3,11 @@ dotenv.config();
 import express from "express";
 import morgan from "morgan";
 
-if (process.env.NODE_ENV === "production") {
+const app = express();
+
+if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
-
-const app = express();
 
 app.use(express.json());
 
@@ -19,6 +19,7 @@ app.post("/", (req, res) => {
   res.json({ message: "data received", data: req.body });
 });
 
-app.listen(5100, () => {
-  console.log("listen on the port 5100");
+const PORT = process.env.PORT || 5100;
+app.listen(PORT, () => {
+  console.log(`listen on the port ${PORT}`);
 });
