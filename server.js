@@ -53,16 +53,7 @@ app.patch("/api/v1/jobs/:id", (req, res) => {
 });
 
 //DELETE JOB
-app.delete("/api/v1/jobs/:id", (req, res) => {
-  const { id } = req.params;
-  const job = jobs.find((job) => job.id === id);
-  if (!job) {
-    return res.status(404).json({ error: `no job with such ${id}` });
-  }
-  const newJobs = jobs.filter((job) => job.id !== id);
-  jobs = newJobs;
-  res.status(200).json({ msg: `job ${job.position} successful removed` });
-});
+app.delete("/api/v1/jobs/:id", );
 
 //PAGE NOT FOUND
 app.use("*", (req, res) => {

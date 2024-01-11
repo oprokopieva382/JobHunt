@@ -22,11 +22,22 @@ export const createJob = async (req, res) => {
   res.status(201).json({ job });
 };
 
-export const getSingleJob = async (req, res) => {
+export const getJob = async (req, res) => {
   const { id } = req.params;
   const job = jobs.find((job) => job.id === id);
   if (!job) {
     return res.status(404).json({ error: `no job with such ${id}` });
   }
   res.status(200).json({ job });
+};
+
+export const deleteJob = async (req, res) => {
+  const { id } = req.params;
+  const job = jobs.find((job) => job.id === id);
+  if (!job) {
+    return res.status(404).json({ error: `no job with such ${id}` });
+  }
+  const newJobs = jobs.filter((job) => job.id !== id);
+  jobs = newJobs;
+  res.status(200).json({ msg: `job ${job.position} successful removed` });
 };
