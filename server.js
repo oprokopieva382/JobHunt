@@ -32,14 +32,7 @@ app.get("/api/v1/jobs", );
 app.post("/api/v1/jobs", );
 
 //GET SINGLE JOB
-app.get("/api/v1/jobs/:id", (req, res) => {
-  const { id } = req.params;
-  const job = jobs.find((job) => job.id === id);
-  if (!job) {
-    return res.status(404).json({ error: `no job with such ${id}` });
-  }
-  res.status(200).json({ job });
-});
+app.get("/api/v1/jobs/:id", );
 
 //EDIT JOB
 app.patch("/api/v1/jobs/:id", (req, res) => {

@@ -21,3 +21,12 @@ export const createJob = async (req, res) => {
   jobs.push(job);
   res.status(201).json({ job });
 };
+
+export const getSingleJob = async (req, res) => {
+  const { id } = req.params;
+  const job = jobs.find((job) => job.id === id);
+  if (!job) {
+    return res.status(404).json({ error: `no job with such ${id}` });
+  }
+  res.status(200).json({ job });
+};
