@@ -1,5 +1,5 @@
 import Job from "../models/JobModel.js";
-import NotFoundError from "../errors/customError.js"
+import {NotFoundError} from "../errors/customError.js"
 import {StatusCodes} from "http-status-codes";
 //200 OK OK
 //201 CREATED Created
