@@ -25,7 +25,7 @@ app.post("/", (req, res) => {
   res.json({ message: "data received", data: req.body });
 });
 
-app.get("/api/v1/jobs", (res)=> {
+app.get("/api/v1/jobs", (req,res)=> {
     res.status(200).json({jobs})
 })
 
