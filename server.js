@@ -40,20 +40,36 @@ app.post("/api/v1/jobs", (req, res) => {
   }
   const id = nanoid(10);
   const job = { id, company, position };
-  jobs.push(job)
+  jobs.push(job);
   res.status(201).json({ job });
 });
 
 //GET SINGLE JOB
 app.get("/api/v1/jobs/:id", (req, res) => {
   const { id } = req.params;
-  const job = jobs.find((job)=> job.id === id) 
+  const job = jobs.find((job) => job.id === id);
   if (!job) {
-    return res
-      .status(404)
-      .json({ error: `no job with such ${id}` });
+    return res.status(404).json({ error: `no job with such ${id}` });
   }
- res.status(200).json({job})
+  res.status(200).json({ job });
+});
+
+//EDIT JOB
+app.patch("/api/v1/jobs/:id", (req, res) => {
+  const { company, position } = req.body;
+  if (!company || !position) {
+    return res
+      .status(400)
+      .json({ error: "please provide company and position" });
+  }
+  const { id } = req.params;
+  const job = jobs.find((job) => job.id === id);
+  if (!job) {
+    return res.status(404).json({ error: `no job with such ${id}` });
+  }
+  job.company = company;
+  job.position = position;
+  res.status(200).json({ msg: "job modified", job });
 });
 
 const PORT = process.env.PORT || 5100;
