@@ -79,10 +79,17 @@ app.delete("/api/v1/jobs/:id", (req, res) => {
   if (!job) {
     return res.status(404).json({ error: `no job with such ${id}` });
   }
-  const newJobs = jobs.filter((job)=> job.id !== id)
-  jobs = newJobs
-  res.status(200).json({msg: `job ${job.position} successful removed` });
+  const newJobs = jobs.filter((job) => job.id !== id);
+  jobs = newJobs;
+  res.status(200).json({ msg: `job ${job.position} successful removed` });
 });
+
+//PAGE NOT FOUND
+app.use("*", (req, res) => {
+  res.status(404).json({ msg: "not found" });
+});
+
+
 
 const PORT = process.env.PORT || 5100;
 app.listen(PORT, () => {
