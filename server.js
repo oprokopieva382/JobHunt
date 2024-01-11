@@ -2,12 +2,8 @@ import * as dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import morgan from "morgan";
-// import { nanoid } from "nanoid";
 
-// let jobs = [
-//   { id: nanoid(), company: "apple", position: "front-end" },
-//   { id: nanoid(), company: "google", position: "back-end" },
-// ];
+import jobRouter from "./routes/jobRouter.js"
 
 const app = express();
 
@@ -25,20 +21,7 @@ app.post("/", (req, res) => {
   res.json({ message: "data received", data: req.body });
 });
 
-//GET ALL JOBS
-app.get("/api/v1/jobs", );
-
-//CREATE JOB
-app.post("/api/v1/jobs", );
-
-//GET SINGLE JOB
-app.get("/api/v1/jobs/:id", );
-
-//EDIT JOB
-app.patch("/api/v1/jobs/:id", );
-
-//DELETE JOB
-app.delete("/api/v1/jobs/:id", );
+app.use("/api/v1/jobs", jobRouter)
 
 //PAGE NOT FOUND
 app.use("*", (req, res) => {
