@@ -41,3 +41,20 @@ export const deleteJob = async (req, res) => {
   jobs = newJobs;
   res.status(200).json({ msg: `job ${job.position} successful removed` });
 };
+
+export const updateJob = async (req, res) => {
+  const { company, position } = req.body;
+  if (!company || !position) {
+    return res
+      .status(400)
+      .json({ error: "please provide company and position" });
+  }
+  const { id } = req.params;
+  const job = jobs.find((job) => job.id === id);
+  if (!job) {
+    return res.status(404).json({ error: `no job with such ${id}` });
+  }
+  job.company = company;
+  job.position = position;
+  res.status(200).json({ msg: "job modified", job });
+};
