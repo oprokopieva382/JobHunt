@@ -32,13 +32,11 @@ export const getJob = async (req, res) => {
 //DELETE JOB
 export const deleteJob = async (req, res) => {
   const { id } = req.params;
-  const job = jobs.find((job) => job.id === id);
+  const job = await Job.findByIdAndDelete(id)
   if (!job) {
     return res.status(404).json({ error: `no job with such ${id}` });
   }
-  const newJobs = jobs.filter((job) => job.id !== id);
-  jobs = newJobs;
-  res.status(200).json({ msg: `job ${job.position} successful removed` });
+  res.status(200).json({ msg: `job ${job.position} in ${job.company} successful removed` });
 };
 
 //EDIT JOB
