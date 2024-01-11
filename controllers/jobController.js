@@ -1,16 +1,24 @@
 import Job from "../models/JobModel.js";
+import {StatusCodes} from "http-status-codes";
+//200 OK OK
+//201 CREATED Created
+//400 BAD_REQUEST Bad Request
+//401 UNAUTHORIZED Unauthorized
+//403 FORBIDDEN Forbidden
+//404 NOT_FOUND Not Found
+//500 INTERNAL_SERVER_ERROR Internal Server Error
 
 //GET ALL JOBS
 export const allJobs = async (req, res) => {
   const jobs = await Job.find({});
-  res.status(200).json({ jobs });
+  res.status(StatusCodes.OK).json({ jobs });
 };
 
 //CREATE JOB
 export const createJob = async (req, res) => {
   const { company, position } = req.body;
   const job = await Job.create({ company, position });
-  res.status(201).json({ job });
+  res.status(StatusCodes.OK).json({ job });
 };
 
 //GET SINGLE JOB
@@ -20,7 +28,7 @@ export const getJob = async (req, res) => {
   if (!job) {
     return res.status(404).json({ error: `no job with such ${id}` });
   }
-  res.status(200).json({ job });
+  res.status(StatusCodes.OK).json({ job });
 };
 
 //DELETE JOB
@@ -31,7 +39,7 @@ export const deleteJob = async (req, res) => {
     return res.status(404).json({ error: `no job with such ${id}` });
   }
   res
-    .status(200)
+    .status(StatusCodes.OK)
     .json({ msg: `job ${job.position} in ${job.company} successful removed` });
 };
 
@@ -45,5 +53,5 @@ export const updateJob = async (req, res) => {
     return res.status(404).json({ error: `no job with such ${id}` });
   }
 
-  res.status(200).json({ msg: "job modified", job });
+  res.status(StatusCodes.OK).json({ msg: "job modified", job });
 };
