@@ -25,6 +25,10 @@ app.post("/", (req, res) => {
   res.json({ message: "data received", data: req.body });
 });
 
+app.get("/api/v1/jobs", (res)=> {
+    res.status(200).json({jobs})
+})
+
 const PORT = process.env.PORT || 5100;
 app.listen(PORT, () => {
   console.log(`listen on the port ${PORT}`);
