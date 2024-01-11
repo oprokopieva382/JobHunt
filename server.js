@@ -2,12 +2,12 @@ import * as dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import morgan from "morgan";
-import { nanoid } from "nanoid";
+// import { nanoid } from "nanoid";
 
-let jobs = [
-  { id: nanoid(), company: "apple", position: "front-end" },
-  { id: nanoid(), company: "google", position: "back-end" },
-];
+// let jobs = [
+//   { id: nanoid(), company: "apple", position: "front-end" },
+//   { id: nanoid(), company: "google", position: "back-end" },
+// ];
 
 const app = express();
 
@@ -26,9 +26,7 @@ app.post("/", (req, res) => {
 });
 
 //GET ALL JOBS
-app.get("/api/v1/jobs", (req, res) => {
-  res.status(200).json({ jobs });
-});
+app.get("/api/v1/jobs", );
 
 //CREATE JOB
 app.post("/api/v1/jobs", (req, res) => {
@@ -92,7 +90,7 @@ app.use("*", (req, res) => {
 //ERROR
 app.use((err, req, res, next)=> {
   console.log(err)
-  res.status(505).json({msg: "something went wrong"})
+  res.status(500).json({msg: "something went wrong"})
 })
 
 const PORT = process.env.PORT || 5100;
