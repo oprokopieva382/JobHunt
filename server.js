@@ -81,7 +81,7 @@ app.delete("/api/v1/jobs/:id", (req, res) => {
   }
   const newJobs = jobs.filter((job)=> job.id !== id)
   jobs = newJobs
-  res.status(200).json({msg: `job ${job.position} successful removed`, newJobs });
+  res.status(200).json({msg: `job ${job.position} successful removed` });
 });
 
 const PORT = process.env.PORT || 5100;
