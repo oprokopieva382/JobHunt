@@ -2,6 +2,7 @@ import { StatusCodes } from "http-status-codes";
 import User from "../models/UserModel.js";
 import { hashedPassword, comparePassword } from "../utils/hashedPassword.js";
 import { UnauthenticatedError, UnauthorizedError } from "../errors/customError.js";
+import { createJWT } from "../utils/tokenUtils.js";
 
 //CREATE USER
 export const register = async (req, res) => {
@@ -19,7 +20,9 @@ export const login = async (req, res) => {
   const user = await User.findOne({email: req.body.email})
   const isValidUser = user && await comparePassword(req.body.password, user.password)
   if (!isValidUser) throw new UnauthenticatedError("invalid credentials");
-  res.send("login");
+
+  const token = createJWT({userId: user._id, role: user.role})
+  res.json({ token });
 };
 
 //DELETE USER
