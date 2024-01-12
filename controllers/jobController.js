@@ -1,6 +1,5 @@
 import Job from "../models/JobModel.js";
-import {NotFoundError} from "../errors/customError.js"
-import {StatusCodes} from "http-status-codes";
+import { StatusCodes } from "http-status-codes";
 //200 OK OK
 //201 CREATED Created
 //400 BAD_REQUEST Bad Request
@@ -26,7 +25,6 @@ export const createJob = async (req, res) => {
 export const getJob = async (req, res) => {
   const { id } = req.params;
   const job = await Job.findById(id);
-  if (!job) throw new NotFoundError(`no job with such ${id}`); 
   res.status(StatusCodes.OK).json({ job });
 };
 
@@ -34,7 +32,6 @@ export const getJob = async (req, res) => {
 export const deleteJob = async (req, res) => {
   const { id } = req.params;
   const job = await Job.findByIdAndDelete(id);
-   if (!job) throw new NotFoundError(`no job with such ${id}`); 
   res
     .status(StatusCodes.OK)
     .json({ msg: `job ${job.position} in ${job.company} successful removed` });
@@ -46,7 +43,5 @@ export const updateJob = async (req, res) => {
   const job = await Job.findByIdAndUpdate(id, req.body, {
     new: true,
   });
-  if (!job) throw new NotFoundError(`no job with such ${id}`); 
-
   res.status(StatusCodes.OK).json({ msg: "job modified", job });
 };
