@@ -5,7 +5,10 @@ import express from "express";
 import morgan from "morgan";
 import mongoose from "mongoose";
 import jobRouter from "./routes/jobRouter.js";
+import authRouter from "./routes/authRouter.js";
+
 import { errorHandlerMiddleware } from "./middleware/errorHandlerMiddleware.js";
+import { login, register } from "./controllers/authController.js";
 
 const app = express();
 
@@ -19,6 +22,10 @@ app.get("/", (req, res) => {
   res.send("Hello server");
 });
 
+app.use("/register", register)
+app.use("/login", login)
+
+app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/jobs", jobRouter);
 
 //PAGE NOT FOUND
