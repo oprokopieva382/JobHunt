@@ -9,6 +9,7 @@ import authRouter from "./routes/authRouter.js";
 
 import { errorHandlerMiddleware } from "./middleware/errorHandlerMiddleware.js";
 import { login, register } from "./controllers/authController.js";
+import { authMiddleware } from "./middleware/authMiddleware.js";
 
 const app = express();
 
@@ -26,7 +27,7 @@ app.use("/register", register)
 app.use("/login", login)
 
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/jobs", jobRouter);
+app.use("/api/v1/jobs", authMiddleware, jobRouter);
 
 //PAGE NOT FOUND
 app.use("*", (req, res) => {
