@@ -4,17 +4,17 @@ import { JOB_STATUS, JOB_TYPE } from "../utils/constants.js";
 import Job from "../models/JobModel.js";
 import mongoose from "mongoose";
 
-export const withValidationErrors = (validateValues) => {
+const withValidationErrors = (validateValues) => {
   return [
     validateValues,
     (req, res, next) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        const errorMessage = errors.array().map((error) => error.msg);
-        if (errorMessage[0].startWith("no job")) {
-          throw new NotFoundError(errorMessage);
+        const errorMessages = errors.array().map((error) => error.msg);
+        if (errorMessages[0].startsWith("no job")) {
+          throw new NotFoundError(errorMessages);
         }
-        throw new BadRequestError(errorMessage);
+        throw new BadRequestError(errorMessages);
       }
       next();
     },
@@ -35,10 +35,9 @@ export const validateJobInput = withValidationErrors([
 
 export const validateIdParam = withValidationErrors([
   param("id").custom(async (value) => {
-    const isValidId = mongoose.Types.ObjectId.isValid(value);
-
-    if (!isValidId) throw BadRequestError("invalid MongoDB id");
+    const isValidMongoId = mongoose.Types.ObjectId.isValid(value);
+    if (!isValidMongoId) throw new BadRequestError("invalid MongoDB id");
     const job = await Job.findById(value);
-    if (!job) throw new NotFoundError(`no job with such ${value}`);
+    if (!job) throw new NotFoundError(`no job with id : ${value}`);
   }),
 ]);
