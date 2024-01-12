@@ -64,3 +64,13 @@ export const validateRegisterInput = withValidationErrors([
   body("lastName").notEmpty().withMessage("last name is required").trim(),
   body("location").notEmpty().withMessage("user location is required").trim(),
 ]);
+
+export const validateLoginInput = withValidationErrors([
+  body("email")
+    .notEmpty()
+    .withMessage("email is required")
+    .trim()
+    .isEmail()
+    .withMessage("email is not valid"),
+  body("password").notEmpty().withMessage("password is required").trim(),
+]);
