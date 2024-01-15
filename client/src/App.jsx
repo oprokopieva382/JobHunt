@@ -15,8 +15,10 @@ import {
 } from "./pages";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { checkDefaultTheme } from "./utils/checkDefaultTheme";
+import { action as registerAction } from "./pages/Register";
 
-checkDefaultTheme()
+
+checkDefaultTheme();
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,7 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+        action: registerAction,
       },
       {
         path: "login",
