@@ -26,8 +26,12 @@ app.get("/", (req, res) => {
   res.send("Hello server");
 });
 
-app.use("/register", register)
-app.use("/login", login)
+app.get("/api/v1/test", (req, res) => {
+  res.json({ msg: "test route" });
+});
+
+app.use("/register", register);
+app.use("/login", login);
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", authMiddleware, userRouter);
