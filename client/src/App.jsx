@@ -17,6 +17,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { checkDefaultTheme } from "./utils/checkDefaultTheme";
 import { action as registerAction } from "./pages/Register";
 
+
 checkDefaultTheme();
 
 const router = createBrowserRouter([
