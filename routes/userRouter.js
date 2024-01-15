@@ -1,4 +1,6 @@
 import { Router } from "express";
+import Job from "../models/JobModel.js";
+import User from "../models/UserModel.js";
 import {
   getApplicationStats,
   getCurrentUser,
