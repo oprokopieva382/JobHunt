@@ -4,11 +4,14 @@ dotenv.config();
 import express from "express";
 import morgan from "morgan";
 import mongoose from "mongoose";
+import cookieParser from "cookie-parser";
 import jobRouter from "./routes/jobRouter.js";
 import authRouter from "./routes/authRouter.js";
+import userRouter from "./routes/userRouter.js";
 
 import { errorHandlerMiddleware } from "./middleware/errorHandlerMiddleware.js";
 import { login, register } from "./controllers/authController.js";
+import { authMiddleware } from "./middleware/authMiddleware.js";
 
 const app = express();
 
@@ -17,6 +20,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.get("/", (req, res) => {
   res.send("Hello server");
@@ -26,7 +30,8 @@ app.use("/register", register)
 app.use("/login", login)
 
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/jobs", jobRouter);
+app.use("/api/v1/users", authMiddleware, userRouter);
+app.use("/api/v1/jobs", authMiddleware, jobRouter);
 
 //PAGE NOT FOUND
 app.use("*", (req, res) => {
