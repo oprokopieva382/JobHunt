@@ -3,7 +3,6 @@ import User from "../models/UserModel.js";
 import { hashedPassword, comparePassword } from "../utils/hashedPassword.js";
 import {
   UnauthenticatedError,
-  UnauthorizedError,
 } from "../errors/customError.js";
 import { createJWT } from "../utils/tokenUtils.js";
 
@@ -37,6 +36,7 @@ export const login = async (req, res) => {
   res.status(StatusCodes.OK).json({ msg: "user logged in" });
 };
 
+//LOGOUT USER
 export const logout = (req, res) => {
   res.cookie("token", "logout", {
     httpOnly: true,
@@ -44,21 +44,3 @@ export const logout = (req, res) => {
   });
   res.status(StatusCodes.OK).json({msg: "user logged out"})
 };
-
-//DELETE USER
-// export const deleteUser = async (req, res) => {
-//   const { id } = req.params;
-//   const user = await User.findByIdAndDelete(id);
-//   res
-//     .status(StatusCodes.OK)
-//     .json({ msg: `user ${user.name} successful removed` });
-// };
-
-//EDIT USER
-// export const updateUser = async (req, res) => {
-//   const { id } = req.params;
-//   const user = await User.findByIdAndUpdate(id, req.body, {
-//     new: true,
-//   });
-//   res.status(StatusCodes.OK).json({ msg: "user modified", user });
-// };
