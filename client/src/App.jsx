@@ -16,7 +16,7 @@ import {
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { checkDefaultTheme } from "./utils/checkDefaultTheme";
 import { action as registerAction } from "./pages/Register";
-
+import { action as loginAction } from "./pages/Login";
 
 checkDefaultTheme();
 
@@ -35,6 +35,7 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
+        action: loginAction,
       },
       {
         path: "dashboard",
