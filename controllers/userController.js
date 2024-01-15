@@ -1,8 +1,11 @@
-import { StatusCodes } from "http-status-codes"
+import { StatusCodes } from "http-status-codes";
+import Job from "../models/JobModel.js";
+import User from "../models/UserModel.js";
 
-export const getCurrentUser = (req, res)=> {
-res.status(StatusCodes.OK).json({msg: "current user route"})
-}
+export const getCurrentUser = async (req, res) => {
+  const user = await User.findOne({ _id: req.user.userId });
+  res.status(StatusCodes.OK).json({ user });
+};
 
 export const getApplicationStats = (req, res) => {
   res.status(StatusCodes.OK).json({ msg: "application stats" });

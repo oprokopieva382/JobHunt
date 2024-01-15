@@ -20,4 +20,9 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
+UserSchema.methods.userToDisplay = function () {
+  const obj = this.toObject();
+  delete obj.password;
+  return obj;
+};
 export default mongoose.model("User", UserSchema);
