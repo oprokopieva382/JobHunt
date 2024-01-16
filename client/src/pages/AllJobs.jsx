@@ -14,13 +14,13 @@ export const loader = async () => {
   }
 };
 
+export const AllJobsContext = createContext()
 export const AllJobs = () => {
   const { data } = useLoaderData();
-  console.log(data);
-  return (
-    <>
+   return (
+    <AllJobsContext.Provider value={{data}}>
       <SearchJobContainer />
       <JobsContainer />
-    </>
+    </AllJobsContext.Provider>
   );
 };
