@@ -19,7 +19,7 @@ const Wrapper = styled.article`
     display: grid;
     place-items: center;
     background: var(--primary-500);
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius5);
     font-size: 1.5rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -42,11 +42,9 @@ const Wrapper = styled.article`
   }
   .content-center {
     display: grid;
-    margin-top: 1rem;
-    margin-bottom: 1.5rem;
+    margin: 1rem 1.5rem;
     grid-template-columns: 1fr;
     row-gap: 1.5rem;
-    align-items: center;
     @media (min-width: 576px) {
       grid-template-columns: 1fr 1fr;
     }
@@ -62,9 +60,9 @@ const Wrapper = styled.article`
     align-items: center;
   }
   .actions {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     display: flex;
-    align-items: center;
+    justify-content: end;
   }
   .edit-btn,
   .delete-btn {

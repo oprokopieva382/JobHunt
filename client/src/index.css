@@ -49,6 +49,7 @@ html {
   /* rest of the vars */
 
   --border-radius: 0.25rem;
+  --border-radius5: 5rem;
   --letter-spacing: 1px;
   --transition: 0.3s ease-in-out all;
   --max-width: 1120px;
@@ -322,7 +323,7 @@ button:disabled {
 }
 
 .interview {
- background: #e4fcee; /* Green */
+ background: #e4fcee;
   color: #033b1b; 
 }
 .declined {
