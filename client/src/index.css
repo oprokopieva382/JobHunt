@@ -49,6 +49,7 @@ html {
   /* rest of the vars */
 
   --border-radius: 0.25rem;
+  --border-radius5: 5rem;
   --letter-spacing: 1px;
   --transition: 0.3s ease-in-out all;
   --max-width: 1120px;
@@ -317,15 +318,15 @@ button:disabled {
 
 /* BUTTONS AND BADGES */
 .pending {
-  background: #fef3c7;
-  color: #f59e0b;
+  background: #daecf8; 
+  color: #043352;
 }
 
 .interview {
-  background: #e0e8f9;
-  color: #647acb;
+ background: #e4fcee;
+  color: #033b1b; 
 }
 .declined {
   background: #ffeeee;
-  color: #d66a6a;
+  color: #530c0c;
 }
