@@ -13,12 +13,19 @@ import { errorHandlerMiddleware } from "./middleware/errorHandlerMiddleware.js";
 import { login, register } from "./controllers/authController.js";
 import { authMiddleware } from "./middleware/authMiddleware.js";
 
+import path from "path";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
 const app = express();
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
+app.use(express.static(path.resolve(__dirname, "public")))
 app.use(express.json());
 app.use(cookieParser());
 

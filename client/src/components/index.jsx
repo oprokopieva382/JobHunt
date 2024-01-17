@@ -1,4 +1,5 @@
 export { Logo } from "./logo";
+export { StatCard } from './StatCard';
 export { FormRow } from "./FormRow";
 export { NavBar } from "./NavBar";
 export { SmallSideBar } from "./SmallSideBar";

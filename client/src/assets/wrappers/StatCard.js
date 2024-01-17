@@ -1,15 +1,18 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Wrapper = styled.article`
   padding: 2rem;
   background: var(--background-secondary-color);
-  border-bottom: 5px solid ${(props) => props.color};
-  border-radius: var(--border-radius);
+  border-right: 4px solid ${(props) => props.color};
+  border-bottom: 7px solid ${(props) => props.color};
+  border-radius: var(--border-radius1);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.3s ease;
 
   header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
   }
   .count {
     display: block;
@@ -22,15 +25,14 @@ const Wrapper = styled.article`
     margin: 0;
     text-transform: capitalize;
     letter-spacing: var(--letter-spacing);
-    text-align: left;
-    margin-top: 0.5rem;
+    text-align: center;
     font-size: 1.25rem;
   }
   .icon {
-    width: 70px;
+    width: 60px;
     height: 60px;
     background: ${(props) => props.bcg};
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius5);
     display: flex;
     align-items: center;
     justify-content: center;
