@@ -17,6 +17,7 @@ export const getApplicationStats = async (req, res) => {
 
 //EDIT USER
 export const updateCurrentUser = async (req, res) => {
+  console.log(req.file);
   const obj = { ...req.body };
   delete obj.password;
   const updatedUser = await User.findByIdAndUpdate(req.user.userId, obj);

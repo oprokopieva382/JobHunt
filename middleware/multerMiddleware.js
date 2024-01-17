@@ -1,6 +1,6 @@
 import multer from "multer";
 
-const multerStorage = multer.diskStorage({
+const storage = multer.diskStorage({
   // directory where uploaded avatars will be stored
   destination: (req, file, callback) => {
     callback(null, "public/uploaded");
@@ -12,4 +12,4 @@ const multerStorage = multer.diskStorage({
   },
 });
 
-export const profileAvatarUpload = multer({multerStorage})
+export const profileAvatarUpload = multer({ storage });
