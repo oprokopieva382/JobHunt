@@ -5,14 +5,14 @@ import { JOB_STATUS, JOB_TYPE } from "../../../utils/constants";
 import Wrapper from "../assets/wrappers/DashboardFormPage";
 import { toast } from "react-toastify";
 
-export const action = async ({ request }) => {
+export const action = async ({ request, params }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
-  
+
   try {
-    await customFetch.patch("jobs/:id", data);
+    await customFetch.patch(`jobs/${params.id}`, data);
     toast.success("Job updated successfully");
-    return redirect("all-jobs");
+    return redirect("/dashboard/all-jobs");
   } catch (err) {
     toast.error(err?.response?.data?.msg);
     return err;
