@@ -11,6 +11,6 @@ const router = Router();
 
 router.get("/current-user", getCurrentUser);
 router.post("/update-user", validateUpdateUserInput, updateCurrentUser);
-router.get("/stats", authPermission("admin"), getApplicationStats);
+router.get("/admin/stats", authPermission("admin"), getApplicationStats);
 
 export default router;

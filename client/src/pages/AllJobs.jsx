@@ -1,7 +1,7 @@
 import { SearchJobContainer, JobsContainer } from "../components";
 import {customFetch} from "../utils/customFetch";
 import { useLoaderData } from "react-router-dom";
-import { useContext, createContext } from "react";
+import { createContext } from "react";
 import { toast } from "react-toastify";
 
 export const loader = async () => {

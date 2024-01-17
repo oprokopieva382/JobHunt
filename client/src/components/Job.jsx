@@ -29,14 +29,16 @@ export const Job = ({
       </header>
       <div className="content">
         <div className="content-center">
-        <JobInfo icon={<MdEditCalendar />} text={date} />
-        <div className={`status ${jobStatus}`}>{jobStatus}</div>
-        <JobInfo icon={<CiLocationOn />} text={jobLocation} />
+          <JobInfo icon={<MdEditCalendar />} text={date} />
+          <div className={`status ${jobStatus}`}>{jobStatus}</div>
+          <JobInfo icon={<CiLocationOn />} text={jobLocation} />
           <JobInfo icon={<GiDesk />} text={jobType} />
         </div>
         <footer className="actions">
-          <Link className="btn edit-btn">Edit</Link>
-          <Form>
+          <Link className="btn edit-btn" to={`../edit-job/${_id}`}>
+            Edit
+          </Link>
+          <Form method="post" action={`../delete-job/${_id}`}>
             <button type="submit" className="btn delete-btn">
               Delete
             </button>
