@@ -21,17 +21,17 @@ export const Admin = () => {
   return (
     <Wrapper>
       <StatCard
-        title="current user"
+        title="current users"
         count={users}
-        color="#e9b949"
-        bcg="#fcefc7"
+        color="#7488B9"
+        bcg="#A6C5E1"
         icon={<FaUsers />}
       />
       <StatCard
-        title="current jobs"
+        title="total jobs"
         count={jobs}
-        color="#647acb"
-        bcg="#e0e8f9"
+        color="#4BA8A1"
+        bcg="#B4E2D9"
         icon={<LiaClipboardListSolid />}
       />
     </Wrapper>

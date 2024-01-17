@@ -49,6 +49,7 @@ html {
   /* rest of the vars */
 
   --border-radius: 0.25rem;
+  --border-radius1: 1rem;
   --border-radius5: 5rem;
   --letter-spacing: 1px;
   --transition: 0.3s ease-in-out all;
