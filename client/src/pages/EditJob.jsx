@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 export const action = async ({ request }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
+  
   try {
     await customFetch.patch("jobs/:id", data);
     toast.success("Job updated successfully");
@@ -30,6 +31,43 @@ export const loader = async ({ params }) => {
 
 export const EditJob = () => {
   const { job } = useLoaderData();
-  console.log(job);
-  return <h1>EditJob page</h1>;
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
+
+  return (
+    <Wrapper>
+      <Form method="post" className="form">
+        <h4 className="form-title">edit job</h4>
+        <div className="form-center">
+          <FormRow type="text" name="position" defaultValue={job.position} />
+          <FormRow type="text" name="company" defaultValue={job.company} />
+          <FormRow
+            type="text"
+            name="jobLocation"
+            labelText="job location"
+            defaultValue={job.jobLocation}
+          />
+          <FormRowSelect
+            name="jobStatus"
+            labelText="job status"
+            defaultValue={job.jobStatus}
+            list={Object.values(JOB_STATUS)}
+          />
+          <FormRowSelect
+            name="jobType"
+            labelText="job type"
+            defaultValue={job.jobType}
+            list={Object.values(JOB_TYPE)}
+          />
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="btn btn-block form-btn"
+          >
+            {isSubmitting ? "Submitting..." : "Submit"}
+          </button>
+        </div>
+      </Form>
+    </Wrapper>
+  );
 };
