@@ -1,11 +1,12 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Wrapper = styled.article`
   padding: 2rem;
   background: var(--background-secondary-color);
-  border-right: 8px solid ${(props) => props.color};
+  border-right: 4px solid ${(props) => props.color};
+  border-bottom: 7px solid ${(props) => props.color};
   border-radius: var(--border-radius1);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
   transition: box-shadow 0.3s ease;
 
   header {
