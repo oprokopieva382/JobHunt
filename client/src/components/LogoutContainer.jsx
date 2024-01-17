@@ -14,13 +14,18 @@ export const LogoutContainer = () => {
         className="btn logout-btn"
         onClick={() => setShowLogout(!showLogout)}
       >
-        <PiUserCirclePlusFill className="logout-icon" />
+        {user.avatar ? (
+          <img alt="avatar" src={user.avatar} className="img" />
+        ) : (
+          <PiUserCirclePlusFill className="logout-icon" />
+        )}
+
         {user?.name}
         <PiCaretDoubleDownThin />
       </button>
       <div className={showLogout ? "dropdown show-dropdown" : "dropdown"}>
         <button type="button" className="dropdown-btn" onClick={logoutUser}>
-         Logout
+          Logout
         </button>
       </div>
     </Wrapper>
