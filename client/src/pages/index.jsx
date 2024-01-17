@@ -2,7 +2,6 @@ export {DashboardLayout} from "./DashboardLayout";
 export { AddJob } from "./AddJob";
 export { Admin } from "./Admin";
 export { AllJobs } from "./AllJobs";
-export { DeleteJob } from "./DeleteJob";
 export { EditJob } from "./EditJob";
 export { Error } from "./Error";
 export { HomeLayout } from "./HomeLayout";
