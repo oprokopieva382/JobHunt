@@ -18,6 +18,8 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: "my city",
   },
+  avatar: String,
+  avatarPubId: String
 });
 
 UserSchema.methods.userToDisplay = function () {
