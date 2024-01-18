@@ -5,7 +5,10 @@ import {
   updateCurrentUser,
 } from "../controllers/userController.js";
 import { validateUpdateUserInput } from "../middleware/validationMiddleware.js";
-import { authPermission } from "../middleware/authMiddleware.js";
+import {
+  authPermission,
+  isUserTestOnly,
+} from "../middleware/authMiddleware.js";
 import { profileAvatarUpload } from "../middleware/multerMiddleware.js";
 
 const router = Router();
@@ -13,6 +16,7 @@ const router = Router();
 router.get("/current-user", getCurrentUser);
 router.patch(
   "/update-user",
+  isUserTestOnly,
   profileAvatarUpload.single("avatar"),
   validateUpdateUserInput,
   updateCurrentUser
