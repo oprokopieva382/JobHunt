@@ -19,7 +19,6 @@ export const LogoutContainer = () => {
         ) : (
           <PiUserCirclePlusFill className="logout-icon" />
         )}
-
         {user?.name}
         <PiCaretDoubleDownThin />
       </button>
