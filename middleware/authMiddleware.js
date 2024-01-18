@@ -1,4 +1,5 @@
 import {
+  BadRequestError,
   UnauthenticatedError,
   UnauthorizedError,
 } from "../errors/customError.js";
@@ -10,7 +11,8 @@ export const authMiddleware = (req, res, next) => {
 
   try {
     const { userId, role } = verifyJWT(token);
-    req.user = { userId, role };
+    const userTestOnly = userId === "65a956f67d1fb94ca71ee41a";
+    req.user = { userId, role, userTestOnly };
     next();
   } catch (err) {
     throw new UnauthenticatedError("unauthenticated error");
@@ -25,4 +27,12 @@ export const authPermission = (...roles) => {
     }
     next();
   };
+};
+
+export const isUserTestOnly = (req, res, next) => {
+  if (req.userTestOnly)
+    throw new BadRequestError(
+      "❗You're in a demo exploring and it's a read-only"
+    );
+  next();
 };
