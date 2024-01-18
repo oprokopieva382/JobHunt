@@ -1,5 +1,5 @@
-import { Form, useNavigation, redirect, useLoaderData } from "react-router-dom";
-import { FormRow, FormRowSelect } from "../components";
+import { Form, redirect, useLoaderData } from "react-router-dom";
+import { FormRow, FormRowSelect, SuperSubmitButton } from "../components";
 import { customFetch } from "../utils/customFetch";
 import { JOB_STATUS, JOB_TYPE } from "../../../utils/constants";
 import Wrapper from "../assets/wrappers/DashboardFormPage";
@@ -31,10 +31,7 @@ export const loader = async ({ params }) => {
 
 export const EditJob = () => {
   const { job } = useLoaderData();
-  const navigation = useNavigation();
-  const isSubmitting = navigation.state === "submitting";
-
-  return (
+    return (
     <Wrapper>
       <Form method="post" className="form">
         <h4 className="form-title">edit job</h4>
@@ -59,13 +56,7 @@ export const EditJob = () => {
             defaultValue={job.jobType}
             list={Object.values(JOB_TYPE)}
           />
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="btn btn-block form-btn"
-          >
-            {isSubmitting ? "Submitting..." : "Submit"}
-          </button>
+          <SuperSubmitButton formClass />
         </div>
       </Form>
     </Wrapper>
