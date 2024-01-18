@@ -7,7 +7,7 @@ import { verifyJWT } from "../utils/tokenUtils.js";
 
 export const authMiddleware = (req, res, next) => {
   const { token } = req.cookies;
-  if (!token) throw new UnauthenticatedError("unauthenticated error");
+  if (!token) throw new UnauthenticatedError("Unauthenticated error");
 
   try {
     const { userId, role } = verifyJWT(token);
@@ -15,7 +15,7 @@ export const authMiddleware = (req, res, next) => {
     req.user = { userId, role, userTestOnly };
     next();
   } catch (err) {
-    throw new UnauthenticatedError("unauthenticated error");
+    throw new UnauthenticatedError("Unauthenticated error");
   }
 };
 
@@ -30,9 +30,10 @@ export const authPermission = (...roles) => {
 };
 
 export const isUserTestOnly = (req, res, next) => {
-  if (req.userTestOnly)
+  if (req.user.userTestOnly) {
     throw new BadRequestError(
       "❗You're in a demo exploring and it's a read-only"
     );
+  }
   next();
 };
