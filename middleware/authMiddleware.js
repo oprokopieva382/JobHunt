@@ -11,7 +11,7 @@ export const authMiddleware = (req, res, next) => {
 
   try {
     const { userId, role } = verifyJWT(token);
-    const userTestOnly = userId === "65a956f67d1fb94ca71ee41a";
+    const userTestOnly = userId === "65a98806aa09b687b3c7e3ea";
     req.user = { userId, role, userTestOnly };
     next();
   } catch (err) {
