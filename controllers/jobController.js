@@ -74,6 +74,19 @@ export const displayStats = async (req, res) => {
     { $limit: 6 },
   ]);
 
+  totalApplicationsByMonth = totalApplicationsByMonth.map((app) => {
+    const {
+      _id: { year, month },
+      count,
+    } = app;
+
+    const date = day()
+      .month(month - 1)
+      .year(year)
+      .format("MMM YY");
+    return { date, count };
+  });
+
   const defaultValue = {
     pending: statsTotal.pending || 0,
     interview: statsTotal.interview || 0,
