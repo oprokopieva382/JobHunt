@@ -51,7 +51,7 @@ const router = createBrowserRouter([
         loader: dashboardLoader,
         children: [
           { index: true, element: <AddJob />, action: addJobAction },
-          { path: "stats", element: <Stats /> },
+          { path: "stats", element: <Stats />, loader: statsLoader },
           { path: "all-jobs", element: <AllJobs />, loader: allJobsLoader },
           { path: "profile", element: <Profile />, action: profileAction },
           { path: "admin", element: <Admin />, loader: adminLoader },

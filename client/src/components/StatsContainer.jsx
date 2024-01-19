@@ -1,5 +1,5 @@
 export const StatsContainer = () => {
     return (
-        <>StatsContainer</>
+        <div>StatsContainer</div>
     );
 }
