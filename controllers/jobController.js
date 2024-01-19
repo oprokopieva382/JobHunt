@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+import day from "dayjs";
 import Job from "../models/JobModel.js";
 import { StatusCodes } from "http-status-codes";
 //200 OK OK
@@ -10,9 +12,9 @@ import { StatusCodes } from "http-status-codes";
 
 //GET ALL JOBS
 export const allJobs = async (req, res) => {
- console.log(req.user);
- const jobs = await Job.find({ createdBy: req.user.userId });
- res.status(StatusCodes.OK).json({ jobs });
+  console.log(req.user);
+  const jobs = await Job.find({ createdBy: req.user.userId });
+  res.status(StatusCodes.OK).json({ jobs });
 };
 
 //CREATE JOB
@@ -45,4 +47,66 @@ export const updateJob = async (req, res) => {
     new: true,
   });
   res.status(StatusCodes.OK).json({ msg: "job modified", job });
+};
+
+//SHOW STATS
+export const displayStats = async (req, res) => {
+  let statsTotal = await Job.aggregate([
+    { $match: { createdBy: new mongoose.Types.ObjectId(req.user.userId) } },
+    { $group: { _id: "$jobStatus", count: { $sum: 1 } } },
+  ]);
+
+  statsTotal = statsTotal.reduce((acc, curr) => {
+    const { _id: title, count } = curr;
+    acc[title] = count;
+    return acc;
+  }, {});
+
+  let totalApplicationsByMonth = await Job.aggregate([
+    { $match: { createdBy: new mongoose.Types.ObjectId(req.user.userId) } },
+    {
+      $group: {
+        _id: { year: { $year: "$createdAt" }, month: { $month: "$createdAt" } },
+        count: { $sum: 1 },
+      },
+    },
+    { $sort: { "_id.year": -1, "_id.month": -1 } },
+    { $limit: 6 },
+  ]);
+
+  totalApplicationsByMonth = totalApplicationsByMonth.map((app) => {
+    const {
+      _id: { year, month },
+      count,
+    } = app;
+
+    const date = day()
+      .month(month - 1)
+      .year(year)
+      .format("MMM YY");
+    return { date, count };
+  });
+
+  const defaultValue = {
+    pending: statsTotal.pending || 0,
+    interview: statsTotal.interview || 0,
+    declined: statsTotal.declined || 0,
+  };
+
+  // const monthlyValue = [
+  //   {
+  //     date: "Nov 23",
+  //     count: 15,
+  //   },
+  //   {
+  //     date: "Dec 23",
+  //     count: 25,
+  //   },
+  //   {
+  //     date: "Jan 24",
+  //     count: 19,
+  //   },
+  // ];
+
+  res.status(StatusCodes.OK).json({ defaultValue, totalApplicationsByMonth });
 };
