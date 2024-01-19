@@ -9,7 +9,6 @@ import {
 } from "recharts";
 
 export const HorizontalChart = ({ data }) => {
-  console.log(data);
   return (
     <ResponsiveContainer width="100%" height={450}>
       <AreaChart data={data} margin={{ top: 50 }}>
@@ -21,8 +20,8 @@ export const HorizontalChart = ({ data }) => {
           type="monotone"
           dataKey="count"
           stackId="1"
-          stroke="#d5bdaf"
-          fill="#f5ebe0"
+          stroke="#C18B56"
+          fill="#DFC6A7"
         />
       </AreaChart>
     </ResponsiveContainer>
