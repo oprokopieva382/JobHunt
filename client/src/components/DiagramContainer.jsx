@@ -3,7 +3,7 @@ import Wrapper from "../assets/wrappers/ChartsContainer";
 import { VerticalChart } from "./VerticalChart";
 import { HorizontalChart } from "./HorizontalChart";
 
-export const DiagramContainer = ({ totalApplicationsByMonth }) => {
+export const DiagramContainer = ({ data }) => {
   const [verticalChart, setVerticalChart] = useState(true);
   return (
     <Wrapper>
@@ -11,7 +11,11 @@ export const DiagramContainer = ({ totalApplicationsByMonth }) => {
       <button type="button" onClick={() => setVerticalChart(!verticalChart)}>
         {verticalChart ? "Horizontal chart" : "Vertical chart"}
       </button>
-      {verticalChart ? <VerticalChart /> : <HorizontalChart />}
+      {verticalChart ? (
+        <VerticalChart data={data} />
+      ) : (
+        <HorizontalChart data={data} />
+      )}
     </Wrapper>
   );
 };

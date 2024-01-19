@@ -19,7 +19,7 @@ export const Stats = () => {
     <>
       <StatsContainer totalApplicationsByStatus={totalApplicationsByStatus} />
       {totalApplicationsByMonth?.length > 1 && (
-        <DiagramContainer totalApplicationsByMonth={totalApplicationsByMonth} />
+        <DiagramContainer data={totalApplicationsByMonth} />
       )}
     </>
   );
