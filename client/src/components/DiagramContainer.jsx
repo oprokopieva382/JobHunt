@@ -1,3 +1,3 @@
-export const DiagramContainer = () => {
+export const DiagramContainer = ({ totalApplicationsByMonth }) => {
   return <>DiagramContainer</>;
 };

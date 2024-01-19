@@ -14,11 +14,12 @@ export const loader = async () => {
 export const Stats = () => {
   const { totalApplicationsByStatus, totalApplicationsByMonth } =
     useLoaderData();
+
   return (
     <>
-      <StatsContainer value={totalApplicationsByStatus} />
+      <StatsContainer totalApplicationsByStatus={totalApplicationsByStatus} />
       {totalApplicationsByMonth?.length > 1 && (
-        <DiagramContainer value={totalApplicationsByMonth} />
+        <DiagramContainer totalApplicationsByMonth={totalApplicationsByMonth} />
       )}
     </>
   );
