@@ -7,7 +7,8 @@ import Job from "./models/JobModel.js";
 
 try {
   await mongoose.connect(process.env.MONGO_URL);
-  const demoUser = await User.findOne({ email: "test@test.com" });
+  //const demoUser = await User.findOne({ email: "test@test.com" });
+  const demoUser = await User.findOne({ email: "jim@test.com" });
   const randomJobs = JSON.parse(
     await readFile(new URL("./utils/ramdomData.json", import.meta.url))
   );

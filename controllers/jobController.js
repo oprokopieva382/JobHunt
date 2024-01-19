@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+import day from "dayjs";
 import Job from "../models/JobModel.js";
 import { StatusCodes } from "http-status-codes";
 //200 OK OK
@@ -10,9 +12,9 @@ import { StatusCodes } from "http-status-codes";
 
 //GET ALL JOBS
 export const allJobs = async (req, res) => {
- console.log(req.user);
- const jobs = await Job.find({ createdBy: req.user.userId });
- res.status(StatusCodes.OK).json({ jobs });
+  console.log(req.user);
+  const jobs = await Job.find({ createdBy: req.user.userId });
+  res.status(StatusCodes.OK).json({ jobs });
 };
 
 //CREATE JOB
@@ -45,4 +47,30 @@ export const updateJob = async (req, res) => {
     new: true,
   });
   res.status(StatusCodes.OK).json({ msg: "job modified", job });
+};
+
+//SHOW STATS
+export const displayStats = async (req, res) => {
+  const defaultValue = {
+    pending: 10,
+    interview: 15,
+    declined: 4,
+  };
+
+  const monthlyValue = [
+    {
+      date: "Nov 23",
+      count: 15,
+    },
+    {
+      date: "Dec 23",
+      count: 25,
+    },
+    {
+      date: "Jan 24",
+      count: 19,
+    },
+  ];
+
+  res.status(StatusCodes.OK).json({ defaultValue, monthlyValue });
 };
