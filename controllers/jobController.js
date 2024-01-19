@@ -51,10 +51,23 @@ export const updateJob = async (req, res) => {
 
 //SHOW STATS
 export const displayStats = async (req, res) => {
+  let statsTotal = await Job.aggregate([
+    { $match: { createdBy: new mongoose.Types.ObjectId(req.user.userId) } },
+    { $group: { _id: "$jobStatus", count: { $sum: 1 } } },
+  ]);
+
+  statsTotal = statsTotal.reduce((acc, curr) => {
+    const { _id: title, count } = curr;
+    acc[title] = count;
+    return acc;
+  }, {});
+
+   console.log(statsTotal);
+
   const defaultValue = {
-    pending: 10,
-    interview: 15,
-    declined: 4,
+    pending: statsTotal.pending || 0,
+    interview: statsTotal.interview || 0,
+    declined: statsTotal.declined || 0,
   };
 
   const monthlyValue = [
