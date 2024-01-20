@@ -20,7 +20,7 @@ export const VerticalChart = ({ data }) => {
           fill="#DFC6A7"
           barSize={75}
           dataKey="count"
-          background={{ fill: "#edede9" }}
+          background={{ fill: "#e0e1dd" }}
         />
       </BarChart>
     </ResponsiveContainer>
