@@ -12,8 +12,12 @@ import { StatusCodes } from "http-status-codes";
 
 //GET ALL JOBS
 export const allJobs = async (req, res) => {
-  console.log(req.user);
-  const jobs = await Job.find({ createdBy: req.user.userId });
+  console.log(req.query);
+  const { search } = req.query;
+  const jobs = await Job.find({
+    createdBy: req.user.userId,
+    position: search,
+  });
   res.status(StatusCodes.OK).json({ jobs });
 };
 
@@ -95,5 +99,7 @@ export const displayStats = async (req, res) => {
     return { date, count };
   });
 
-  res.status(StatusCodes.OK).json({ totalApplicationsByStatus, totalApplicationsByMonth });
+  res
+    .status(StatusCodes.OK)
+    .json({ totalApplicationsByStatus, totalApplicationsByMonth });
 };
