@@ -12,7 +12,7 @@ import { StatusCodes } from "http-status-codes";
 
 //GET ALL JOBS
 export const allJobs = async (req, res) => {
-  const { search, jobStatus, jobType } = req.query;
+  const { search, jobStatus, jobType, sort } = req.query;
 
   const searchQueryObj = {
     createdBy: req.user.userId,
@@ -33,7 +33,16 @@ export const allJobs = async (req, res) => {
     searchQueryObj.jobType = jobType;
   }
 
-  const jobs = await Job.find(searchQueryObj);
+  const sortProps = {
+    new: "-createdAt",
+    old: "createdAt",
+    "a-z": "position",
+    "z-a": "-position",
+  };
+
+  const sortParams = sortProps[sort] || sortProps.new;
+
+  const jobs = await Job.find(searchQueryObj).sort(sortParams);
   res.status(StatusCodes.OK).json({ jobs });
 };
 
