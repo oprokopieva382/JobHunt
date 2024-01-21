@@ -12,7 +12,7 @@ import { StatusCodes } from "http-status-codes";
 
 //GET ALL JOBS
 export const allJobs = async (req, res) => {
-  const { search, jobStatus, jobType, sort } = req.query;
+  const { search, jobStatus, jobType, sort, page } = req.query;
 
   const searchQueryObj = {
     createdBy: req.user.userId,
@@ -42,8 +42,20 @@ export const allJobs = async (req, res) => {
 
   const sortParams = sortProps[sort] || sortProps.new;
 
-  const jobs = await Job.find(searchQueryObj).sort(sortParams);
-  res.status(StatusCodes.OK).json({ jobs });
+  //pagination logic
+  const currentPage = Number(req.query.page) || 1;
+  const jobLimitOnThePage = Number(req.query.limit) || 10;
+  const nextPage = (currentPage - 1) * jobLimitOnThePage;
+
+  const jobs = await Job.find(searchQueryObj)
+    .sort(sortParams)
+    .skip(nextPage)
+    .limit(jobLimitOnThePage);
+
+  const totalJobs = await Job.countDocuments(searchQueryObj);
+  const numOfPages = Math.ceil(totalJobs / jobLimitOnThePage);
+
+  res.status(StatusCodes.OK).json({ totalJobs, numOfPages, currentPage, jobs });
 };
 
 //CREATE JOB
