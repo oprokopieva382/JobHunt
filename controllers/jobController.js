@@ -12,9 +12,50 @@ import { StatusCodes } from "http-status-codes";
 
 //GET ALL JOBS
 export const allJobs = async (req, res) => {
-  console.log(req.user);
-  const jobs = await Job.find({ createdBy: req.user.userId });
-  res.status(StatusCodes.OK).json({ jobs });
+  const { search, jobStatus, jobType, sort, page } = req.query;
+
+  const searchQueryObj = {
+    createdBy: req.user.userId,
+  };
+
+  if (search) {
+    searchQueryObj.$or = [
+      { position: { $regex: search.trim(), $options: "i" } },
+      { company: { $regex: search.trim(), $options: "i" } },
+    ];
+  }
+
+  if (jobStatus && jobStatus !== "all") {
+    searchQueryObj.jobStatus = jobStatus;
+  }
+
+  if (jobType && jobType !== "all") {
+    searchQueryObj.jobType = jobType;
+  }
+
+  const sortProps = {
+    new: "-createdAt",
+    old: "createdAt",
+    "a-z": "position",
+    "z-a": "-position",
+  };
+
+  const sortParams = sortProps[sort] || sortProps.new;
+
+  //pagination logic
+  const currentPage = Number(req.query.page) || 1;
+  const jobLimitOnThePage = Number(req.query.limit) || 10;
+  const nextPage = (currentPage - 1) * jobLimitOnThePage;
+
+  const jobs = await Job.find(searchQueryObj)
+    .sort(sortParams)
+    .skip(nextPage)
+    .limit(jobLimitOnThePage);
+
+  const totalJobs = await Job.countDocuments(searchQueryObj);
+  const numOfPages = Math.ceil(totalJobs / jobLimitOnThePage);
+
+  res.status(StatusCodes.OK).json({ totalJobs, numOfPages, currentPage, jobs });
 };
 
 //CREATE JOB
@@ -95,5 +136,7 @@ export const displayStats = async (req, res) => {
     return { date, count };
   });
 
-  res.status(StatusCodes.OK).json({ totalApplicationsByStatus, totalApplicationsByMonth });
+  res
+    .status(StatusCodes.OK)
+    .json({ totalApplicationsByStatus, totalApplicationsByMonth });
 };
