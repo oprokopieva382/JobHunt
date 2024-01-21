@@ -12,7 +12,7 @@ import { StatusCodes } from "http-status-codes";
 
 //GET ALL JOBS
 export const allJobs = async (req, res) => {
-  const { search } = req.query;
+  const { search, jobStatus, jobType } = req.query;
 
   const searchQueryObj = {
     createdBy: req.user.userId,
@@ -23,6 +23,14 @@ export const allJobs = async (req, res) => {
       { position: { $regex: search.trim(), $options: "i" } },
       { company: { $regex: search.trim(), $options: "i" } },
     ];
+  }
+
+  if (jobStatus && jobStatus !== "all") {
+    searchQueryObj.jobStatus = jobStatus;
+  }
+
+  if (jobType && jobType !== "all") {
+    searchQueryObj.jobType = jobType;
   }
 
   const jobs = await Job.find(searchQueryObj);
