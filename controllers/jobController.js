@@ -43,8 +43,8 @@ export const allJobs = async (req, res) => {
   const sortParams = sortProps[sort] || sortProps.new;
 
   //pagination logic
-  const currentPage = Number(req.query.page) || 1;
-  const jobLimitOnThePage = Number(req.query.limit) || 10;
+  const currentPage = +req.query.page || 1;
+  const jobLimitOnThePage = +req.query.limit || 10;
   const nextPage = (currentPage - 1) * jobLimitOnThePage;
 
   const jobs = await Job.find(searchQueryObj)
