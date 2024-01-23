@@ -5,6 +5,7 @@ import { createContext } from "react";
 import { toast } from "react-toastify";
 
 export const loader = async () => {
+  console.log("hi")
   try {
     const { data } = await customFetch.get("jobs");
     return { data };
