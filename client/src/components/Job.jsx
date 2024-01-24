@@ -19,7 +19,7 @@ export const Job = ({
 }) => {
   const date = day(createdAt).format("MMM Do, YYYY");
   return (
-    <Wrapper>
+    <Wrapper jobStatus={jobStatus}>
       <header>
         <div className="main-icon">{company.charAt(0)}</div>
         <div className="info">

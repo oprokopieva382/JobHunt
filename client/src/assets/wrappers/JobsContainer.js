@@ -9,7 +9,7 @@ const Wrapper = styled.section`
     width: 50%;
     margin: 0 auto;
     font-weight: 630;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     box-shadow: 0 4px 8px rgba(226, 232, 240, 0.8);
     padding: 1%;
     border-radius: 8px;

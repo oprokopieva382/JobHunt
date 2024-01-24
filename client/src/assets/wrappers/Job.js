@@ -1,11 +1,24 @@
 import styled from 'styled-components';
 
+const getStatusColor = (status) => {
+  switch (status) {
+    case "pending":
+      return "#daecf8";
+    case "interview":
+      return "#e4fcee";
+    case "declined":
+      return "#ffeeee";
+    default:
+      return "transparent";
+  }
+};
+
 const Wrapper = styled.article`
   background: var(--background-secondary-color);
   border-radius: var(--border-radius);
   display: grid;
   grid-template-rows: 1fr auto;
-  box-shadow: var(--shadow-2);
+  box-shadow: ${({ jobStatus }) => `0 4px 8px ${getStatusColor(jobStatus)}`};
   header {
     padding: 1rem 1.5rem;
     border-bottom: 1px solid var(--grey-100);
