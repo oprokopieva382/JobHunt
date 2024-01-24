@@ -12,7 +12,6 @@ const Wrapper = styled.section`
     margin-bottom: 1.5rem;
     box-shadow: 0 4px 8px rgba(226, 232, 240, 0.8);
     padding: 1%;
-    text-align: center;
     border-radius: 8px;
     display: flex;
     align-items: center;

@@ -18,8 +18,8 @@ const Wrapper = styled.section`
     border-color: transparent;
     width: 50px;
     height: 40px;
-    font-weight: 700;
-    font-size: 1.25rem;
+    font-weight: 500;
+    font-size: 1rem;
     color: var(--primary-600);
     border-radius: var(--border-radius);
     cursor: pointer;

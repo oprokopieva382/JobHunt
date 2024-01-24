@@ -5,6 +5,7 @@ const Wrapper = styled.section`
   width: 100%;
   background: var(--background-secondary-color);
   padding: 2rem;
+  box-shadow: 0 4px 8px rgba(211, 169, 124, 0.5);
   .form-title {
     margin-bottom: 2rem;
     text-align: center;
