@@ -52,6 +52,7 @@ export const SearchJobContainer = () => {
             }}
           />
           <FormRowSelect
+            labelText="Sort By"
             name="sort"
             defaultValue={sort}
             list={[...Object.values(JOB_SORT_BY)]}
