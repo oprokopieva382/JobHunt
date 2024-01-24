@@ -1,11 +1,13 @@
 import Wrapper from "../assets/wrappers/JobsContainer";
 import { useAllJobsContext } from "./../hooks/useAllJobsContext";
 import { Job } from "./Job";
+import { PaginationContainer } from "./PaginationContainer";
 
 export const JobsContainer = () => {
-  const { data } = useAllJobsContext();
+  const { data: {jobs, totalJobs, currentPage, numOfPages} } = useAllJobsContext();
+ 
 
-  if (data.jobs.length === 0) {
+  if (jobs.length === 0) {
     return (
       <Wrapper>
         <h2>No jobs yet...</h2>
@@ -14,11 +16,16 @@ export const JobsContainer = () => {
   }
   return (
     <Wrapper>
+      <h5>
+        {totalJobs} job{jobs.length > 1 && "s"} found
+      </h5>
+      {numOfPages > 1 && <PaginationContainer />}
       <div className="jobs">
-        {data.jobs.map((job) => {
+        {jobs.map((job) => {
           return <Job key={job._id} {...job} />;
         })}
       </div>
+      {numOfPages > 1 && <PaginationContainer />}
     </Wrapper>
   );
 };
