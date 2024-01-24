@@ -1,3 +1,4 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import Wrapper from "../assets/wrappers/PaginationContainer.js";
 import { useAllJobsContext } from "../hooks/useAllJobsContext.jsx";
 import {
@@ -6,14 +7,18 @@ import {
 } from "react-icons/tb";
 
 export const PaginationContainer = () => {
+  const { search, pathname } = useLocation();
+  const navigate = useNavigate();
+
   const {
     data: { currentPage, numOfPages },
   } = useAllJobsContext();
-  console.log(currentPage)
   const pages = Array.from({ length: numOfPages }, (_, i) => i + 1);
 
   const handleCurrentPage = (searchPage) => {
-    console.log(searchPage);
+    const searchParams = new URLSearchParams(search);
+    searchParams.set("page", searchPage);
+    navigate(`${pathname}?${searchParams.toString()}`);
   };
 
   return (
