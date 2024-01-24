@@ -1,11 +1,16 @@
 import Wrapper from "./../assets/wrappers/DashboardFormPage";
-import { Form, Link } from "react-router-dom";
+import { Form, Link, useSubmit } from "react-router-dom";
 import { FormRow } from "./FormRow";
 import { JOB_SORT_BY, JOB_STATUS, JOB_TYPE } from "../../../utils/constants";
 import { FormRowSelect } from "./FormRowSelect";
-import { SuperSubmitButton } from "./SuperSubmitButton";
+import { useAllJobsContext } from "../hooks/useAllJobsContext";
+
 
 export const SearchJobContainer = () => {
+    const onSubmit = useSubmit()
+    const {searchInputParams} = useAllJobsContext()
+    const {jobStatus, jobType, sort, search} = searchInputParams
+
   return (
     <Wrapper>
       <Form className="form">
@@ -13,31 +18,42 @@ export const SearchJobContainer = () => {
         <div className="form-center">
           <FormRow
             type="search"
-            defaultValue="Front-end developer"
+            defaultValue={search}
             name="search"
             labelText="Position/Company"
+            onChange={(e) => {
+              onSubmit(e.currentTarget.form);
+            }}
           />
           <FormRowSelect
             labelText="Job Type"
             list={["all", ...Object.values(JOB_TYPE)]}
-            defaultValue="all"
+            defaultValue={jobType}
             name="jobType"
+            onChange={(e) => {
+              onSubmit(e.currentTarget.form);
+            }}
           />
           <FormRowSelect
             labelText="Job Status"
             list={["all", ...Object.values(JOB_STATUS)]}
-            defaultValue="all"
+            defaultValue={jobStatus}
             name="jobStatus"
+            onChange={(e) => {
+              onSubmit(e.currentTarget.form);
+            }}
           />
           <FormRowSelect
             name="sort"
-            defaultValue="newest"
+            defaultValue={sort}
             list={[...Object.values(JOB_SORT_BY)]}
+            onChange={(e) => {
+              onSubmit(e.currentTarget.form);
+            }}
           />
           <Link to="/dashboard/all-jobs" className="btn form-btn delete-btn">
             Reset
           </Link>
-          <SuperSubmitButton formClass />
         </div>
       </Form>
     </Wrapper>

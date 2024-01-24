@@ -8,10 +8,9 @@ export const loader = async ({ request }) => {
   const params = Object.fromEntries([
     ...new URL(request.url).searchParams.entries(),
   ]);
-  console.log(params);
   try {
     const { data } = await customFetch.get("jobs", { params });
-    return { data };
+    return { data, searchInputParams: { ...params } };
   } catch (err) {
     toast.error(err?.response?.data?.msg);
     return err;
@@ -20,9 +19,9 @@ export const loader = async ({ request }) => {
 
 export const AllJobsContext = createContext();
 export const AllJobs = () => {
-  const { data } = useLoaderData();
+  const { data, searchInputParams } = useLoaderData();
   return (
-    <AllJobsContext.Provider value={{ data }}>
+    <AllJobsContext.Provider value={{ data, searchInputParams }}>
       <SearchJobContainer />
       <JobsContainer />
     </AllJobsContext.Provider>
