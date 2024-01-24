@@ -5,11 +5,21 @@ import { JOB_SORT_BY, JOB_STATUS, JOB_TYPE } from "../../../utils/constants";
 import { FormRowSelect } from "./FormRowSelect";
 import { useAllJobsContext } from "../hooks/useAllJobsContext";
 
-
 export const SearchJobContainer = () => {
-    const onSubmit = useSubmit()
-    const {searchInputParams} = useAllJobsContext()
-    const {jobStatus, jobType, sort, search} = searchInputParams
+  const onSubmit = useSubmit();
+  const { searchInputParams } = useAllJobsContext();
+  const { jobStatus, jobType, sort, search } = searchInputParams;
+
+  const runDebounce = (onChange) => {
+    let timeout;
+    return (e) => {
+      const formValues = e.currentTarget.form;
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        onChange(formValues);
+      }, 2000);
+    };
+  };
 
   return (
     <Wrapper>
@@ -21,9 +31,7 @@ export const SearchJobContainer = () => {
             defaultValue={search}
             name="search"
             labelText="Position/Company"
-            onChange={(e) => {
-              onSubmit(e.currentTarget.form);
-            }}
+            onChange={runDebounce((inputs) => onSubmit(inputs))}
           />
           <FormRowSelect
             labelText="Job Type"
