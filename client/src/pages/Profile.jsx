@@ -31,7 +31,7 @@ export const Profile = () => {
         <div className="form-center">
           <div className="form-row">
             <label htmlFor="image" className="form-label">
-              avatar image (max size 0.5MB)
+              your avatar (max size 0.5MB)
             </label>
             <input
               className="form-input"
@@ -41,7 +41,12 @@ export const Profile = () => {
               accept="image/*"
             />
           </div>
-          <FormRow type="text" name="name" defaultValue={name} />
+          <FormRow
+            type="text"
+            name="name"
+            labelText="First name"
+            defaultValue={name}
+          />
           <FormRow
             type="text"
             name="lastName"
