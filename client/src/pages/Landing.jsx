@@ -15,7 +15,7 @@ export const Landing = () => {
             job <span>tracking</span> app
           </h1>
           <p>
-            Explore your dream job opportunities with our JobHunt App — an
+            Explore your dream job opportunities with our Job Hunt App — an
             platform-organizer designed to streamline your job applications and
             track your career journey seamlessly. Elevate your career path with
             us. Take the next step towards success. Join us on your journey to

@@ -34,8 +34,8 @@ const Wrapper = styled.aside`
     }
     .logospan {
       font-weight: bold;
-      color: var(--primary-500);
-      padding-left: 3px;
+      color: var(--primary-600);
+      padding-left: 6px;
     }
     header {
       height: 6rem;
@@ -59,7 +59,7 @@ const Wrapper = styled.aside`
     }
     .nav-link:hover {
       padding-left: 3rem;
-      color: var(--primary-500);
+      color: var(--primary-600);
       transition: var(--transition);
     }
     .icon {
@@ -69,7 +69,7 @@ const Wrapper = styled.aside`
       place-items: center;
     }
     .active {
-      color: var(--primary-500);
+      color: var(--primary-600);
     }
     .pending {
       background: var(--background-color);
