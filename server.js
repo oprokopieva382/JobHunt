@@ -18,7 +18,7 @@ import path from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -32,7 +32,7 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
-app.use(express.static(path.resolve(__dirname, "public")))
+app.use(express.static(path.resolve(__dirname, "public")));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -50,6 +50,10 @@ app.use("/login", login);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", authMiddleware, userRouter);
 app.use("/api/v1/jobs", authMiddleware, jobRouter);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "public", "index.html"));
+});
 
 //PAGE NOT FOUND
 app.use("*", (req, res) => {

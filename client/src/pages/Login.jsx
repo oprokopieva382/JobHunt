@@ -28,7 +28,7 @@ export const Login = () => {
     };
     try {
       await customFetch.post("auth/login", testData);
-      toast.success("Explore The JobHunt App");
+      toast.success("Explore The Job Hunt App");
       return navigate("/dashboard");
     } catch (err) {
       toast.error(err?.response?.data?.msg);
