@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Wrapper from "../assets/wrappers/ChartsContainer";
-import { VerticalChart } from "./VerticalChart";
-import { HorizontalChart } from "./HorizontalChart";
+import { VerticalChart, HorizontalChart } from ".";
 
 export const DiagramContainer = ({ data }) => {
   const [verticalChart, setVerticalChart] = useState(true);
