@@ -21,6 +21,67 @@ export const PaginationContainer = () => {
     navigate(`${pathname}?${searchParams.toString()}`);
   };
 
+  const addButton = ({ page, activeButton }) => {
+    return (
+      <button
+        key={page}
+        className={`btn page-btn ${activeButton && "active"}`}
+        onClick={() => handleCurrentPage(page)}
+      >
+        {page}
+      </button>
+    );
+  };
+
+  const renderButton = () => {
+    let pageButtons = [];
+    //first button
+    pageButtons.push(addButton({ page: 1, activeButton: currentPage === 1 }));
+
+    //dots before
+    if (currentPage > 3) {
+      pageButtons.push(
+        <span className="page-btn dots" key="dots-1">
+          ...
+        </span>
+      );
+    }
+
+    //one before current button
+    if (currentPage !== 1 && currentPage !== 2) {
+      pageButtons.push(
+        addButton({ page: currentPage - 1, activeButton: false })
+      );
+    }
+
+    //current button
+    if (currentPage !== 1 && currentPage !== numOfPages) {
+      pageButtons.push(addButton({ page: currentPage, activeButton: true }));
+    }
+
+    //one after current button
+    if (currentPage !== numOfPages && currentPage !== numOfPages - 1) {
+      pageButtons.push(
+        addButton({ page: currentPage + 1, activeButton: false })
+      );
+    }
+
+    //dots after
+    if (currentPage < numOfPages - 2) {
+      pageButtons.push(
+        <span className="page-btn dots" key="dots+1">
+          ...
+        </span>
+      );
+    }
+
+    //lastButton
+    pageButtons.push(
+      addButton({ page: numOfPages, activeButton: currentPage === numOfPages })
+    );
+    return pageButtons;
+  };
+
   return (
     <Wrapper>
       <button
@@ -34,17 +95,7 @@ export const PaginationContainer = () => {
         <TbPlayerTrackPrevFilled />
         PREV
       </button>
-      <div className="btn-container">
-        {pages.map((page) => (
-          <button
-            key={page}
-            className={`btn page-btn ${page === currentPage && "active"}`}
-            onClick={() => handleCurrentPage(page)}
-          >
-            {page}
-          </button>
-        ))}
-      </div>
+      <div className="btn-container">{renderButton()}</div>
       <button
         className="btn next-btn"
         onClick={() => {
