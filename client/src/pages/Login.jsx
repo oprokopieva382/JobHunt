@@ -38,8 +38,8 @@ export const Login = () => {
     <Wrapper>
       <Form method="post" className="form">
         <Logo />
-        <FormRow name="email" defaultValue="John@gmail.com" type="email" />
-        <FormRow name="password" defaultValue="John123" type="password" />
+        <FormRow name="email" type="email" />
+        <FormRow name="password" type="password" />
         <SuperSubmitButton />
         <button type="button" className="btn btn-block" onClick={userTestDrive}>
           explore the app
