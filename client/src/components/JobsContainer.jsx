@@ -1,11 +1,13 @@
 import Wrapper from "../assets/wrappers/JobsContainer";
 import { useAllJobsContext } from "./../hooks/useAllJobsContext";
 import { Job } from "./Job";
+import { PaginationContainer } from "./PaginationContainer";
+import { PiCloudArrowDownThin } from "react-icons/pi";
 
 export const JobsContainer = () => {
-  const { data } = useAllJobsContext();
-
-  if (data.jobs.length === 0) {
+  const { data: {jobs, totalJobs, numOfPages} } = useAllJobsContext();
+ 
+  if (jobs.length === 0) {
     return (
       <Wrapper>
         <h2>No jobs yet...</h2>
@@ -14,11 +16,15 @@ export const JobsContainer = () => {
   }
   return (
     <Wrapper>
+      <h5>
+        {totalJobs} job{jobs.length > 1 && "s"} found <span className="title-span"><PiCloudArrowDownThin /></span>
+      </h5>
       <div className="jobs">
-        {data.jobs.map((job) => {
+        {jobs.map((job) => {
           return <Job key={job._id} {...job} />;
         })}
       </div>
+      {numOfPages > 1 && <PaginationContainer />}
     </Wrapper>
   );
 };

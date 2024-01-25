@@ -10,3 +10,4 @@ export { SearchJobContainer } from "./SearchJobContainer";
 export { SuperSubmitButton } from "./SuperSubmitButton";
 export { StatsContainer } from "./StatsContainer";
 export { DiagramContainer } from "./DiagramContainer";
+export { PaginationContainer } from "./PaginationContainer";

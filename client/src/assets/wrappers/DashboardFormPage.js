@@ -4,9 +4,12 @@ const Wrapper = styled.section`
   border-radius: var(--border-radius);
   width: 100%;
   background: var(--background-secondary-color);
-  padding: 3rem 2rem 4rem;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(211, 169, 124, 0.5);
   .form-title {
     margin-bottom: 2rem;
+    text-align: center;
+    text-transform: uppercase;
   }
   .form {
     margin: 0;
