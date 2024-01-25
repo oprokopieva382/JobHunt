@@ -1,6 +1,5 @@
-import styled from "styled-components";
 import Wrapper from "./../assets/wrappers/LandingPage";
-import {Logo} from "../components";
+import { Logo } from "../components";
 import main from "../assets/images/main.png";
 import { Link } from "react-router-dom";
 
@@ -16,11 +15,11 @@ export const Landing = () => {
             job <span>tracking</span> app
           </h1>
           <p>
-            Discover your dream job with our job tracking app. We provide a
-            seamless experience for managing your job search, connecting you
-            with the latest opportunities, and helping you navigate your career
-            path. Take the next step towards success. Join us on your path to
-            success!
+            Explore your dream job opportunities with our JobHunt App — an
+            platform-organizer designed to streamline your job applications and
+            track your career journey seamlessly. Elevate your career path with
+            us. Take the next step towards success. Join us on your journey to
+            achieve new heights!
           </p>
           <Link to="/register" className="btn register-link">
             Register
