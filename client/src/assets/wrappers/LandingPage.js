@@ -20,7 +20,7 @@ const Wrapper = styled.section`
     margin-top: 10px;
     padding: 10px;
     font-weight: bold;
-    color: var(--primary-500);
+    color: var(--primary-600);
   }
   .page {
     min-height: calc(100vh - var(--nav-height));
@@ -30,9 +30,8 @@ const Wrapper = styled.section`
   }
   h1 {
     font-weight: 700;
-    color: var(--grey-700);
-    span {
-      color: var(--primary-500);
+     span {
+      color: var(--primary-600);
     }
     margin-bottom: 1.5rem;
   }

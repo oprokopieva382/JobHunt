@@ -1,6 +1,6 @@
 import Wrapper from "../assets/wrappers/JobsContainer";
 import { useAllJobsContext } from "./../hooks/useAllJobsContext";
-import { Job } from "./Job";
+import { Job } from ".";
 import { PaginationContainer } from "./PaginationContainer";
 import { PiCloudArrowDownThin } from "react-icons/pi";
 

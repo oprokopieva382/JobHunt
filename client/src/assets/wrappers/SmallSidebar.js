@@ -31,7 +31,8 @@ const Wrapper = styled.aside`
   }
   .logospan {
     font-weight: bold;
-    color: var(--primary-500);
+    color: var(--primary-600);
+    padding-top: 5px;
   }
   .content {
     background: var(--background-secondary-color);
@@ -73,7 +74,7 @@ const Wrapper = styled.aside`
     transition: var(--transition);
   }
   .nav-link:hover {
-    color: var(--primary-500);
+    color: var(--primary-600);
   }
   .icon {
     font-size: 1.5rem;
@@ -82,7 +83,7 @@ const Wrapper = styled.aside`
     place-items: center;
   }
   .active {
-    color: var(--primary-500);
+    color: var(--primary-600);
   }
 `;
 export default Wrapper;

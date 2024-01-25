@@ -24,16 +24,16 @@ export const Register = () => {
       <Form method="post" className="form">
         <Logo />
         <h4>Register</h4>
-        <FormRow name="name" defaultValue="John" type="text" />
+        <FormRow name="name" type="text" />
         <FormRow
           name="lastName"
           labelText="Last Name"
           defaultValue="Smith"
           type="text"
         />
-        <FormRow name="location" defaultValue="Moon" type="text" />
-        <FormRow name="email" defaultValue="John@gmail.com" type="email" />
-        <FormRow name="password" defaultValue="John123" type="password" />
+        <FormRow name="location" type="text" />
+        <FormRow name="email" type="email" />
+        <FormRow name="password" type="password" />
         <SuperSubmitButton />
         <p>
           Already a member?

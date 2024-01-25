@@ -2,8 +2,8 @@ import Wrapper from "../assets/wrappers/Navbar";
 import { BsSliders } from "react-icons/bs";
 import { Logo } from "./logo";
 import { useDashboardContext } from "../hooks/useDashboardContext";
-import { LogoutContainer } from "./LogoutContainer";
-import { ThemeToggle } from "./ThemeToggle";
+import { LogoutContainer } from ".";
+import { ThemeToggle } from ".";
 
 
 export const NavBar = () => {

@@ -12,6 +12,6 @@ console.log(res);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <>
     <App />
-    <ToastContainer position="top-right" />
+    <ToastContainer position="bottom-right" autoClose={1500} />
   </>
 );
