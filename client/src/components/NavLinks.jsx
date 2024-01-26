@@ -1,4 +1,4 @@
-import { links } from "../utils/Links";
+import { links } from "../utils/links";
 import { NavLink } from "react-router-dom";
 import { useDashboardContext } from "../hooks/useDashboardContext";
 
