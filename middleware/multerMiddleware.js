@@ -1,15 +1,16 @@
 import multer from "multer";
+import DataParser from "datauri/parser.js";
+import path from "path";
 
-const storage = multer.diskStorage({
-  // directory where uploaded avatars will be stored
-  destination: (req, file, callback) => {
-    callback(null, "public/uploaded");
-  },
-  filename: (req, file, callback) => {
-    const avatarName = file.originalname;
-    // name of the uploaded avatar
-    callback(null, avatarName);
-  },
-});
+const storage = multer.memoryStorage();
 
 export const profileAvatarUpload = multer({ storage });
+
+const parser = new DataParser();
+
+const imageFormat = (file) => {
+  const fileExtension = path.extname(file.originalname).toString();
+  return parser.format(fileExtension, file.buffer).content;
+};
+
+export default imageFormat;
