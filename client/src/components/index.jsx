@@ -1,4 +1,4 @@
-export { Logo } from "./logo";
+export { Logo } from "./Logo";
 export { StatCard } from './StatCard';
 export { FormRow } from "./FormRow";
 export { NavBar } from "./NavBar";
