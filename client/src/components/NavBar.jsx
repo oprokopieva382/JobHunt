@@ -1,6 +1,6 @@
 import Wrapper from "../assets/wrappers/Navbar";
 import { BsSliders } from "react-icons/bs";
-import { Logo } from "./logo";
+import { Logo } from ".";
 import { useDashboardContext } from "../hooks/useDashboardContext";
 import { LogoutContainer } from ".";
 import { ThemeToggle } from ".";
