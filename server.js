@@ -36,14 +36,6 @@ app.use(express.static(path.resolve(__dirname, "./client/dist")));
 app.use(express.json());
 app.use(cookieParser());
 
-app.get("/", (req, res) => {
-  res.send("Hello server");
-});
-
-app.get("/api/v1/test", (req, res) => {
-  res.json({ msg: "test route" });
-});
-
 app.use("/register", register);
 app.use("/login", login);
 
