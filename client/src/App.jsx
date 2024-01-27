@@ -33,7 +33,7 @@ checkDefaultTheme();
 const clientQuery = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 1000 * 60 * 5,
+      staleTime: 1000 * 60 * 1,
     },
   },
 });
@@ -53,27 +53,43 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
-        action: loginAction,
+        action: loginAction(clientQuery),
       },
       {
         path: "dashboard",
-        element: <DashboardLayout />,
-        loader: dashboardLoader,
+        element: <DashboardLayout clientQuery={clientQuery} />,
+        loader: dashboardLoader(clientQuery),
         children: [
-          { index: true, element: <AddJob />, action: addJobAction },
-          { path: "stats", element: <Stats />, loader: statsLoader },
-          { path: "all-jobs", element: <AllJobs />, loader: allJobsLoader },
-          { path: "profile", element: <Profile />, action: profileAction },
+          {
+            index: true,
+            element: <AddJob />,
+            action: addJobAction(clientQuery),
+          },
+          {
+            path: "stats",
+            element: <Stats />,
+            loader: statsLoader(clientQuery),
+          },
+          {
+            path: "all-jobs",
+            element: <AllJobs />,
+            loader: allJobsLoader(clientQuery),
+          },
+          {
+            path: "profile",
+            element: <Profile />,
+            action: profileAction(clientQuery),
+          },
           { path: "admin", element: <Admin />, loader: adminLoader },
           {
             path: "edit-job/:id",
             element: <EditJob />,
-            action: editJobAction,
-            loader: editJobLoader,
+            action: editJobAction(clientQuery),
+            loader: editJobLoader(clientQuery),
           },
           {
             path: "delete-job/:id",
-            action: deleteJobAction,
+            action: deleteJobAction(clientQuery),
           },
         ],
       },

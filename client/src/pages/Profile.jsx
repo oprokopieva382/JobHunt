@@ -4,21 +4,25 @@ import { FormRow, SuperSubmitButton } from "../components";
 import Wrapper from "../assets/wrappers/DashboardFormPage";
 import { toast } from "react-toastify";
 
-export const action = async ({ request }) => {
-  const formData = await request.formData();
-  const img = await formData.get("avatar");
-  if (img && img.size > 500000) {
-    toast.error("Image size too large");
-    return null;
-  }
-  try {
-    await customFetch.patch("users/update-user", formData);
-    toast.success("Profile updated successfully");
-  } catch (err) {
-    toast.error(err?.response?.data?.msg);
-  }
-  return null;
-};
+export const action =
+  (clientQuery) =>
+  async ({ request }) => {
+    const formData = await request.formData();
+    const img = await formData.get("avatar");
+    if (img && img.size > 500000) {
+      toast.error("Image size too large");
+      return null;
+    }
+    try {
+      await customFetch.patch("users/update-user", formData);
+      clientQuery.invalidateQueries(["user"]);
+      toast.success("Profile updated successfully");
+      return redirect("dashboard");
+    } catch (err) {
+      toast.error(err?.response?.data?.msg);
+      return null;
+    }
+  };
 
 export const Profile = () => {
   const { user } = useOutletContext();

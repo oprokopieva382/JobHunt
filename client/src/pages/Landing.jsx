@@ -11,15 +11,15 @@ export const Landing = () => {
       </nav>
       <div className="container page">
         <div className="info">
+          <span>Simplify Your Job Tracking with</span>
           <h1>
-            job <span>tracking</span> app
+            app <span>Organizer</span>
           </h1>
           <p>
-            Explore your dream job opportunities with our Job Hunt App — an
-            platform-organizer designed to streamline your job applications and
-            track your career journey seamlessly. Elevate your career path with
-            us. Take the next step towards success. Join us on your journey to
-            achieve new heights!
+            Optimize a streamlined job search experience with our all-in-one
+            platform designed to manage applications seamlessly. Stay organized,
+            track your career journey, and elevate your path to success. Join us
+            on your journey to new heights!"
           </p>
           <Link to="/register" className="btn register-link">
             Register
