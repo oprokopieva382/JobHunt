@@ -28,7 +28,6 @@ export const Register = () => {
         <FormRow
           name="lastName"
           labelText="Last Name"
-          defaultValue="Smith"
           type="text"
         />
         <FormRow name="location" type="text" />
