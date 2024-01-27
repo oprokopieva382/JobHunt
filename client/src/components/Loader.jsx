@@ -8,7 +8,6 @@ export const Loader = () => {
       radius={5}
       color="#af6f39"
       ariaLabel="ball-triangle-loading"
-      wrapperStyle={{}}
       wrapperClass=""
       visible={true}
     />
