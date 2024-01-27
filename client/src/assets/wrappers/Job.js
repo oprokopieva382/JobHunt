@@ -70,6 +70,7 @@ const Wrapper = styled.article`
     width: 100px;
     height: 30px;
     display: grid;
+    margin-left: 5%;
     align-items: center;
   }
   .actions {
