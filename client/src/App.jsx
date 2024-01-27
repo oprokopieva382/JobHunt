@@ -33,7 +33,7 @@ checkDefaultTheme();
 const clientQuery = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 1000 * 60 * 2,
+      staleTime: 1000 * 60 * 1,
     },
   },
 });
