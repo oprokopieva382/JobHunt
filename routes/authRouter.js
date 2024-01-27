@@ -4,10 +4,17 @@ import {
   validateRegisterInput,
   validateLoginInput,
 } from "../middleware/validationMiddleware.js";
+import rateLimit from "express-rate-limit";
 const router = Router();
 
-router.post("/register", validateRegisterInput, register);
-router.post("/login", validateLoginInput, login);
+const limiter = rateLimit({
+  windowMs: 5 * 60 * 1000, //5 min
+  max: 5,
+  message: { msg: "IP rate limit exceeded, retry in 5 minutes." },
+});
+
+router.post("/register", limiter, validateRegisterInput, register);
+router.post("/login", limiter, validateLoginInput, login);
 router.get("/logout", logout);
 
 export default router;

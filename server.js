@@ -38,8 +38,9 @@ if (process.env.NODE_ENV === "development") {
 app.use(express.static(path.resolve(__dirname, "./client/dist")));
 app.use(express.json());
 app.use(cookieParser());
-app.use(helmet())
-app.use(mongoSanitize())
+
+app.use(helmet()) //security
+app.use(mongoSanitize()) //MongoDB sanitizer
 
 app.use("/register", register);
 app.use("/login", login);
