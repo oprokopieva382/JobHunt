@@ -6,12 +6,10 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
-
 <h3 align="center">Job Hunt</h3>
 
 <p align="center">Simplify your job tracking with app organizer. Optimize a streamlined job search experience with our all-in-one platform designed to manage applications seamlessly. Stay organized, track your career journey, and elevate your path to success. Join us on your journey to new heights!"</p>
 
-  
 <p align="center"> – LoveLink: Connecting Hearts Through Shared Passions and Personalized Matches</p>
 
 <h3 font size="1" align="right"><a href="https://job-hunt-app.onrender.com" target="_blank">Visit Site🚀</a></h3>
@@ -24,6 +22,8 @@
   <ol>
     <li><a href="#tech-stack">Tech Stack</a></li>
     <li><a href="#sneak-peek">Sneak Peek</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#questions">Questions</a></li>
     </ol>
 </details>
 
@@ -45,10 +45,6 @@
 ![Recharts](https://img.shields.io/badge/recharts-BBB6EA?style=for-the-badge&logo=recharts&logoColor=DB7595)
 ![Axios](https://img.shields.io/badge/Axios-E4F0FA?style=for-the-badge&logo=axios&logoColor=5C26FF)
 
-
-
-
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Sneak Peek
@@ -56,10 +52,23 @@
 <a name="sneak-peek"></a>
 
 <img src="./screenshots/1page.png" alt="Screenshot of landing page" width="360px"> <img src="./screenshots/2page.png" alt="Screenshot of all jobs page" width="360px">
-<img src="./screenshots/3page.png" alt="Screenshot of stats page" width="360px"> <img src="./screenshots/4page.png" alt="Screenshot of all jobs page" width="360px"> 
+<img src="./screenshots/3page.png" alt="Screenshot of stats page" width="360px"> <img src="./screenshots/4page.png" alt="Screenshot of all jobs page" width="360px">
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## License
+
+<a name="license"></a>
+
+<p>Please refer to the LICENSE in the repo.</p>
+
+## Questions
+
+<a name="questions"></a>
+
+If you have any questions find me on [LinkedIn](https://www.linkedin.com/in/oksana-prokopieva/) or feel free email me oprokopieva382@gmail.com
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
