@@ -1,7 +1,6 @@
 import {
   Outlet,
   redirect,
-  useLoaderData,
   useNavigate,
   useNavigation,
 } from "react-router-dom";
@@ -11,11 +10,19 @@ import { createContext, useState } from "react";
 import { checkDefaultTheme } from "../utils/checkDefaultTheme";
 import { customFetch } from "../utils/customFetch";
 import { toast } from "react-toastify";
+import { useQuery } from "@tanstack/react-query";
 
-export const loader = async () => {
-  try {
+const userQuery = {
+  queryKey: ["user"],
+  queryFn: async () => {
     const { data } = await customFetch("users/current-user");
     return data;
+  },
+};
+
+export const loader = (clientQuery) => async () => {
+  try {
+    return await clientQuery.ensureQueryData(userQuery);
   } catch (err) {
     redirect("/");
   }
@@ -23,8 +30,8 @@ export const loader = async () => {
 
 export const DashboardContext = createContext();
 
-export const DashboardLayout = () => {
-  const { user } = useLoaderData();
+export const DashboardLayout = ({ clientQuery }) => {
+  const { user } = useQuery(userQuery)?.data;
 
   const navigate = useNavigate();
   const navigation = useNavigation();
