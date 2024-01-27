@@ -17,3 +17,4 @@ export { VerticalChart } from "./VerticalChart";
 export { Job } from "./Job";
 export { LogoutContainer } from "./LogoutContainer";
 export { ThemeToggle } from "./ThemeToggle";
+export { Loader } from "./Loader";
