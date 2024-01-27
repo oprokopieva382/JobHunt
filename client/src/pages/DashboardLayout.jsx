@@ -1,12 +1,7 @@
-import {
-  Outlet,
-  redirect,
-  useNavigate,
-  useNavigation,
-} from "react-router-dom";
+import { Outlet, redirect, useNavigate, useNavigation } from "react-router-dom";
 import Wrapper from "../assets/wrappers/Dashboard";
 import { BigSideBar, Loader, NavBar, SmallSideBar } from "../components";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { checkDefaultTheme } from "../utils/checkDefaultTheme";
 import { customFetch } from "../utils/customFetch";
 import { toast } from "react-toastify";
@@ -37,6 +32,7 @@ export const DashboardLayout = ({ clientQuery }) => {
   const navigation = useNavigation();
   const [showSideBar, setShowSideBar] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(checkDefaultTheme());
+  const [isAuthError, setIsAuthError] = useState(false);
 
   const isPageLoaded = navigation.state === "loading";
 
@@ -54,9 +50,26 @@ export const DashboardLayout = ({ clientQuery }) => {
   const logoutUser = async () => {
     navigate("/");
     await customFetch("auth/logout");
-    clientQuery.invalidateQuery()
+    clientQuery.invalidateQueries();
     toast.success("Logged out, back as needed.");
   };
+
+  customFetch.interceptors.response.use(
+    (response) => {
+      return response;
+    },
+    (error) => {
+      if (error?.response?.status === 401) {
+        setIsAuthError(true);
+      }
+      return Promise.reject(error);
+    }
+  );
+
+  useEffect(() => {
+    if (!isAuthError) return;
+    logoutUser();
+  }, [isAuthError]);
 
   return (
     <DashboardContext.Provider
