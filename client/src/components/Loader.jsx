@@ -1,15 +1,16 @@
-import { Hairball} from "react-loader-spinner/dist/beta";
+import { BallTriangle } from "react-loader-spinner";
 
 export const Loader = () => {
   return (
-    <Hairball
-      preset="dawn"
-      colors={{
-        fillColor1: "#ecc57a",
-        fillColor2: "#DFC6A7",
-        fillColor3: "#c18b56",
-        fillColor4: "#9b5429",
-      }}
+    <BallTriangle
+      height={100}
+      width={100}
+      radius={5}
+      color="#af6f39"
+      ariaLabel="ball-triangle-loading"
+      wrapperStyle={{}}
+      wrapperClass=""
+      visible={true}
     />
   );
 };
