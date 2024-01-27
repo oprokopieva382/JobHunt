@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 export const action =
   (clientQuery) =>
   async ({ params }) => {
-    debugger
     try {
       await customFetch.delete(`jobs/${params.id}`);
       clientQuery.invalidateQueries(["jobs"]);
