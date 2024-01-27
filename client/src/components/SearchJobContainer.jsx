@@ -7,8 +7,8 @@ import { useAllJobsContext } from "../hooks/useAllJobsContext";
 
 export const SearchJobContainer = () => {
   const onSubmit = useSubmit();
-  const { searchInputParams } = useAllJobsContext();
-  const { jobStatus, jobType, sort, search } = searchInputParams;
+  const { searchInputValues } = useAllJobsContext();
+  const { jobStatus, jobType, sort, search } = searchInputValues;
 
   const runDebounce = (onChange) => {
     let timeout;
