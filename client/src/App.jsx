@@ -33,7 +33,7 @@ checkDefaultTheme();
 const clientQuery = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 1000 * 60 * 5,
+      staleTime: 1000 * 60 * 2,
     },
   },
 });
@@ -61,7 +61,11 @@ const router = createBrowserRouter([
         loader: dashboardLoader,
         children: [
           { index: true, element: <AddJob />, action: addJobAction },
-          { path: "stats", element: <Stats />, loader: statsLoader },
+          {
+            path: "stats",
+            element: <Stats />,
+            loader: statsLoader(clientQuery),
+          },
           { path: "all-jobs", element: <AllJobs />, loader: allJobsLoader },
           { path: "profile", element: <Profile />, action: profileAction },
           { path: "admin", element: <Admin />, loader: adminLoader },
