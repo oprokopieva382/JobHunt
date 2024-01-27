@@ -12,7 +12,7 @@ export const action =
     const data = Object.fromEntries(formData);
     try {
       await customFetch.post("auth/login", data);
-      clientQuery.invalidateQuerier();
+      clientQuery.invalidateQueries();
       toast.success("Login successful");
       return redirect("/dashboard");
     } catch (err) {
