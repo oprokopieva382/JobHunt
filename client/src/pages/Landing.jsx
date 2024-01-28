@@ -11,7 +11,7 @@ export const Landing = () => {
       </nav>
       <div className="container page">
         <div className="info">
-          <span>Simplify Your Job Tracking with</span>
+          <span>Simplify Your Job Tracking With</span>
           <h1>
             app <span>Organizer</span>
           </h1>
